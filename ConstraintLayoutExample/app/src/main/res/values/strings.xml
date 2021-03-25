@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ConstraintLayoutExample</string>
+    <string name="total_point_label">মোট পয়েন্ট</string>
+    <string name="leaderboard">লিডার বোর্ড</string>
+    <string name="position_label">অবস্থান</string>
+    <string name="scoring_day_label">স্কোরিং দিন</string>
+    <string name="scoring_time_label">স্কোরিং সময়</string>
+    <string name="scoring_time">১০:৪৫:৩০</string>
+    <string name="position">৫ম</string>
+    <string name="scoring_day">৫ম দিন</string>
+</resources>
