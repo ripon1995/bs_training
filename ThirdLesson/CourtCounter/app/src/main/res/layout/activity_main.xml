@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/ll"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".MainActivity">
+
+   <LinearLayout
+
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+       <LinearLayout
+           android:padding="15dp"
+           android:orientation="vertical"
+           android:layout_weight="1"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+           <com.google.android.material.textview.MaterialTextView
+               android:text="Team A"
+               android:textStyle="bold"
+               android:fontFamily="sans-serif-condensed-medium"
+               android:gravity="center"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"/>
+           <com.google.android.material.textview.MaterialTextView
+               android:id="@+id/team_a_score"
+               android:text="0"
+               android:textSize="75dp"
+               android:fontFamily="sans-serif-condensed-medium"
+               android:gravity="center"
+               android:layout_width="match_parent"
+               android:layout_height="100dp"/>
+           <com.google.android.material.button.MaterialButton
+               android:onClick="addPoint3"
+               android:text="+3 Points"
+               android:fontFamily="sans-serif-condensed-medium"
+               android:textColor="@color/black"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"/>
+           <com.google.android.material.button.MaterialButton
+               android:onClick="addPoint2"
+               android:text="+2 Points"
+               android:textColor="@color/black"
+               android:fontFamily="sans-serif-condensed-medium"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"/>
+           <com.google.android.material.button.MaterialButton
+               android:onClick="addPoint1"
+               android:text="Free Throw"
+               android:textColor="@color/black"
+               android:fontFamily="sans-serif-condensed-medium"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"/>
+       </LinearLayout>
+       <View
+           android:background="#e01fb7"
+           android:layout_width="5dp"
+           android:layout_height="300dp"/>
+       <LinearLayout
+           android:padding="15dp"
+           android:layout_weight="1"
+           android:orientation="vertical"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+
+           <com.google.android.material.textview.MaterialTextView
+               android:gravity="center"
+               android:text="Team B"
+               android:fontFamily="sans-serif-condensed-medium"
+               android:textStyle="bold"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"/>
+           <com.google.android.material.textview.MaterialTextView
+               android:id="@+id/team_b_score"
+               android:gravity="center"
+               android:fontFamily="sans-serif-condensed-medium"
+               android:textSize="75dp"
+               android:text="0"
+               android:layout_width="match_parent"
+               android:layout_height="100dp"/>
+
+           <com.google.android.material.button.MaterialButton
+               android:onClick="add3"
+               android:text="+3 Points"
+               android:fontFamily="sans-serif-condensed-medium"
+               android:textColor="@color/black"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"/>
+           <com.google.android.material.button.MaterialButton
+               android:text="+2 Points"
+               android:textColor="@color/black"
+               android:fontFamily="sans-serif-condensed-medium"
+               android:onClick="add2"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"/>
+           android:fontFamily="sans-serif-condensed-medium"
+           <com.google.android.material.button.MaterialButton
+               android:layout_width="match_parent"
+               android:text="Free throw"
+               android:textColor="@color/black"
+               android:fontFamily="sans-serif-condensed-medium"
+               android:onClick="add1"
+               android:layout_height="wrap_content"/>
+
+       </LinearLayout>
+   </LinearLayout>
+    <RelativeLayout
+
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.button.MaterialButton
+            android:onClick="reset"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/materialButton"
+            android:layout_width="wrap_content"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:layout_height="wrap_content"
+            android:text="Reset"/>
+    </RelativeLayout>
+
+
+
+</LinearLayout>
