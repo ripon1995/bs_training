@@ -12,12 +12,14 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public class MainActivity extends AppCompatActivity {
     EditText etPassword;
+    EditText etRePassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         etPassword=findViewById(R.id.etPassword);
+        etRePassword=findViewById(R.id.etRePassword);
     }
 
     private int passwordValidityCheck(String str) {
@@ -41,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
         return errorCode;
     }
 
-    public void submit(View view) {
-        String str=etPassword.getText().toString();
+    void checkPass(String str)
+    {
         if(str.length()<8)
         {
             TextInputLayout textInputLayout=findViewById(R.id.filledTextFieldPassword);
@@ -66,6 +68,27 @@ public class MainActivity extends AppCompatActivity {
                 textInputLayout.setEndIconMode(TextInputLayout.END_ICON_PASSWORD_TOGGLE);
                 textInputLayout.setErrorEnabled(false);
             }
+        }
+
+    }
+
+    public void submit(View view) {
+        String str=etPassword.getText().toString();
+        checkPass(str);
+        String strRePass=etRePassword.getText().toString();
+        checkRePass(str, strRePass);
+    }
+
+    private void checkRePass(String str, String strRePass) {
+        if(!str.matches(strRePass))
+        {
+            TextInputLayout textInputLayout=findViewById(R.id.filledTextFieldRePassword);
+            textInputLayout.setError("Password did not matched");
+        }
+        else
+        {
+            TextInputLayout textInputLayout=findViewById(R.id.filledTextFieldRePassword);
+            textInputLayout.setErrorEnabled(false);
         }
     }
 }
