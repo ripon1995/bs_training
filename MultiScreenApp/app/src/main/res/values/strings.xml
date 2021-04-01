@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">MultiScreenTest</string>
+    <string name="category_phrases">Phrases</string>
+
+    <!-- Category name for the vocabulary words for colors [CHAR LIMIT=20] -->
+    <string name="category_colors">Colors</string>
+
+    <!-- Category name for the vocabulary words for numbers [CHAR LIMIT=20] -->
+    <string name="category_numbers">Numbers</string>
+
+    <!-- Category name for the vocabulary words for family members [CHAR LIMIT=20] -->
+    <string name="category_family">Family Members</string>
+    <string name="done">Done</string>
+    <string name="perfect">Perfect</string>
+    <string name="center">Center</string>
+    <string name="left">Left</string>
+    <string name="right">Right</string>
+    <string name="above">Above</string>
+    <string name="bottom">Bottom</string>
+    <string name="corneru">CornerU</string>
+    <string name="below">Below</string>
+
+    <string name="cornerf">CornerF</string>
+    <string name="_0">0</string>
+    <string name="dollar">$$</string>
+</resources>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvCenter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/center"
+        android:textColor="#f00f1d"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/left"
+        android:textColor="#0bf4d2"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/tvCenter"
+        app:layout_constraintEnd_toStartOf="@id/tvCenter"
+        app:layout_constraintTop_toTopOf="@id/tvCenter" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/right"
+        android:textColor="#0bf4d2"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/tvCenter"
+        app:layout_constraintStart_toEndOf="@id/tvCenter"
+        app:layout_constraintTop_toTopOf="@id/tvCenter" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/above"
+        android:textColor="#ff00c2"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/tvCenter"
+        app:layout_constraintEnd_toEndOf="@id/tvCenter"
+        app:layout_constraintStart_toStartOf="@id/tvCenter" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/bottom"
+        android:textColor="#ff00c2"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/tvCenter"
+        app:layout_constraintStart_toStartOf="@id/tvCenter"
+        app:layout_constraintTop_toBottomOf="@id/tvCenter" />
+
+    <TextView
+        android:id="@+id/firstCorner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/corneru"
+        android:textColor="#ed00ff"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/right"
+        android:textColor="#ed00ff"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/firstCorner"
+        app:layout_constraintLeft_toRightOf="@id/firstCorner"
+        app:layout_constraintTop_toTopOf="@id/firstCorner" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/below"
+        android:textColor="#ed00ff"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/firstCorner"
+        app:layout_constraintStart_toStartOf="@id/firstCorner"
+        app:layout_constraintTop_toBottomOf="@id/firstCorner" />
+
+    <TextView
+        android:id="@+id/lastCorner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/cornerf"
+        android:textColor="#ed00ff"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/left"
+        android:textColor="#ed00ff"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/lastCorner"
+        app:layout_constraintRight_toLeftOf="@id/lastCorner"
+        app:layout_constraintTop_toTopOf="@id/lastCorner" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/above"
+        android:textColor="#ed00ff"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/lastCorner"
+        app:layout_constraintEnd_toEndOf="@id/lastCorner"
+        app:layout_constraintStart_toStartOf="@id/lastCorner" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
