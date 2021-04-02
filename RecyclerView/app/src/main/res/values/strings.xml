@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">RecyclerView</string>
+    <string name="category_family">Family Members</string>
+    <string name="done">Done</string>
+    <string name="perfect">Perfect</string>
+    <string name="center">Center</string>
+    <string name="left">Left</string>
+    <string name="right">Right</string>
+    <string name="above">Above</string>
+    <string name="bottom">Bottom</string>
+    <string name="corneru">CornerU</string>
+    <string name="below">Below</string>
+    <string name="cornerf">CornerF</string>
+</resources>

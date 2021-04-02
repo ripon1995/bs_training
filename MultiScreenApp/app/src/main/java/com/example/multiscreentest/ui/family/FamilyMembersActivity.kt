@@ -1,7 +1,8 @@
-package com.example.multiscreentest
+package com.example.multiscreentest.ui.family
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.multiscreentest.R
 
 class FamilyMembersActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
