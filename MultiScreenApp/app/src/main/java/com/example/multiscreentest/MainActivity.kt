@@ -4,6 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.example.multiscreentest.ui.colors.ColorsActivity
+import com.example.multiscreentest.ui.family.FamilyMembersActivity
+import com.example.multiscreentest.ui.numbers.NumbersActivity
+import com.example.multiscreentest.ui.phrase.PhrasesActivity
 
 class MainActivity : AppCompatActivity() {
 
