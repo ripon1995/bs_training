@@ -9,12 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MultiScreenTest">
-        <activity android:name=".TestNumber"></activity>
-        <activity android:name=".ui.phrase.PhrasesActivity" />
-        <activity android:name=".ui.colors.ColorsActivity" />
-        <activity android:name=".ui.family.FamilyMembersActivity" />
-        <activity android:name=".ui.numbers.NumbersActivity" />
-        <activity android:name=".MainActivity">
+
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

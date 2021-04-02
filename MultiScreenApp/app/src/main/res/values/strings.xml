@@ -4,5 +4,8 @@
     <string name="category_colors">Colors</string>
     <string name="category_numbers">Numbers</string>
     <string name="category_family">Family Members</string>
+    <string name="color">COLOR</string>
+    <string name="family">FAMILY</string>
+    <string name="phrase">PHRASE</string>
 
 </resources>

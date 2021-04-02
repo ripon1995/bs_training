@@ -1,3 +1,3 @@
-package com.example.multiscreentest.ui.numbers
+package com.example.multiscreentest.model
 
 data class Word(val mWord: String, val nWord: String)

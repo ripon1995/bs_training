@@ -1,4 +1,4 @@
-package com.example.multiscreentest.ui.numbers
+package com.example.multiscreentest.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.multiscreentest.R
+import com.example.multiscreentest.model.Word
 
 internal class CustomAdapterSecond(private var itemList: List<Word>) :
         RecyclerView.Adapter<CustomAdapterSecond.MyViewHolder>() {

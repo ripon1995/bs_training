@@ -1,38 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/tan_background"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/numbers"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/numbers"
-        style="@style/CategoryStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:background="@color/category_numbers"
+        android:gravity="center_horizontal"
         android:onClick="openNumberList"
-        android:text="@string/category_numbers" />
+        android:text="@string/category_numbers"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/family"
-        style="@style/CategoryStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:background="@color/category_family"
+        android:gravity="center_horizontal"
         android:onClick="openFamilyMembers"
-        android:text="@string/category_family" />
+        android:text="@string/category_family"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/numbers" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/colors"
-        style="@style/CategoryStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:background="@color/category_colors"
+        android:gravity="center_horizontal"
         android:onClick="openColor"
-        android:text="@string/category_colors" />
+        android:text="@string/category_colors"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/family" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/phrases"
-        style="@style/CategoryStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:background="@color/category_phrases"
+        android:gravity="center_horizontal"
         android:onClick="openPhrases"
-        android:text="@string/category_phrases" />
+        android:text="@string/category_phrases"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/colors"
+        app:layout_constraintRight_toRightOf="parent" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
