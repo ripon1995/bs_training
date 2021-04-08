@@ -4,8 +4,8 @@ import com.example.retrofitmaster.model.MyAlbumsItem
 import retrofit2.Call
 import retrofit2.http.GET
 
-interface ApiInterface  {
+interface ApiInterface {
 
     @GET("albums")
-    fun getAlbums():Call<List<MyAlbumsItem>>
+    fun getAlbums(): Call<List<MyAlbumsItem>>
 }

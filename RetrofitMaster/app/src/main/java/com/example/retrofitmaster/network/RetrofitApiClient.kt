@@ -6,19 +6,16 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitApiClient {
-private constructor()
-    companion object{
-        val Base_Url="https://jsonplaceholder.typicode.com/"
-        private var retrofit: Retrofit?=null
-        private val gson :Gson= GsonBuilder().setLenient().create()
+    companion object {
+        private const val Base_Url = "https://jsonplaceholder.typicode.com/"
+        private var retrofit: Retrofit? = null
+        private val gson: Gson = GsonBuilder().setLenient().create()
 
-        fun getClient():Retrofit?{
-            if(retrofit==null)
-            {
+        fun getClient(): Retrofit? {
+            if (retrofit == null) {
                 synchronized(RetrofitApiClient::class.java)
                 {
-                    if(retrofit==null)
-                    {
+                    if (retrofit == null) {
                         retrofit = Retrofit.Builder().baseUrl(Base_Url).addConverterFactory(GsonConverterFactory.create(gson)).build()
                     }
                 }
