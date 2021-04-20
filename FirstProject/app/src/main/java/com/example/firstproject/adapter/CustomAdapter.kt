@@ -1,14 +1,21 @@
 package com.example.firstproject.adapter
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.view.marginLeft
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firstproject.R
 import com.example.firstproject.model.Data
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import com.squareup.picasso.Picasso
 
 internal class CustomAdapter(
@@ -26,19 +33,29 @@ internal class CustomAdapter(
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val imageSorce = dataList[position].owner.picture
         val title = dataList[position].owner.title
-        val firstChip = dataList[position].tags.get(0)
-        val secondChip = dataList[position].tags.get(1)
-        val thirdChip = dataList[position].tags.get(2)
+//        val firstChip = dataList[position].tags.get(0)
+//        val secondChip = dataList[position].tags.get(1)
+//        val thirdChip = dataList[position].tags.get(2)
         val firstName = dataList[position].owner.firstName
         val lastName = dataList[position].owner.lastName
         val time = dataList[position].publishDate
         val like = dataList[position].likes
 
+        //dynamically adding chips in chipGroup
+
+        for(i in dataList[position].tags)
+        {
+            val chip:Chip=Chip(holder.itemView.context)
+            chip.text=i
+           // chip.chipBackgroundColor= ColorStateList.valueOf(Color.BLUE)
+            holder.chipGroup.addView(chip)
+        }
+        //tytytytyiuooiuuiooiuuiouuuuuuyuyuyuyghgghghghghghhhhhgghghghhhhhhhhhhhh
         Picasso.with(holder.itemView.context).load(imageSorce).into(holder.imageView)
         holder.name.text = firstName + " " + lastName
-        holder.firstChip.text = firstChip
-        holder.secondChip.text = secondChip
-        holder.thirdChip.text = thirdChip
+//        holder.firstChip.text = firstChip
+//        holder.secondChip.text = secondChip
+//        holder.thirdChip.text = thirdChip
         holder.title.text = title
         holder.time.text = getTime(time)
         holder.likes.text = like.toString()
@@ -64,12 +81,13 @@ internal class CustomAdapter(
 
         var imageView: ImageView = view.findViewById(R.id.imgProfile)
         var title: TextView = view.findViewById(R.id.tvTitle)
-        var firstChip: TextView = view.findViewById(R.id.firstChip)
-        var secondChip: TextView = view.findViewById(R.id.secondChip)
-        var thirdChip: TextView = view.findViewById(R.id.thirdChip)
+//        var firstChip: TextView = view.findViewById(R.id.firstChip)
+//        var secondChip: TextView = view.findViewById(R.id.secondChip)
+//        var thirdChip: TextView = view.findViewById(R.id.thirdChip)
         var time: TextView = view.findViewById(R.id.tvTime)
         var name: Button = view.findViewById(R.id.btnName)
         var likes: TextView = view.findViewById(R.id.tvLike)
+        var chipGroup:ChipGroup=view.findViewById(R.id.chipGroup)
     }
 
     interface CustomAdapterCallback {

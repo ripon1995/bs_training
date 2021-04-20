@@ -49,6 +49,7 @@ class NewsFragment constructor() : Fragment(), CustomAdapter.CustomAdapterCallba
         bundle.putString("firstChip", item.tags.get(0))
         bundle.putString("secondChip", item.tags.get(1))
         bundle.putString("thirdChip", item.tags.get(2))
+
         fragment.arguments = bundle
         callback?.changeFragment(fragment)
     }

@@ -37,73 +37,16 @@
                 android:textStyle="bold"
                 app:fontFamily="serif" />
 
-            <LinearLayout
-                android:id="@+id/chipLayout"
+            <!-- Title, secondary and supporting text -->
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroup"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:layout_height="wrap_content">
 
-                <!-- Title, secondary and supporting text -->
-                <com.google.android.material.chip.ChipGroup
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@id/chipLayout"
-                    app:layout_constraintLeft_toLeftOf="@id/chipLayout"
-                    app:layout_constraintRight_toRightOf="@id/chipLayout"
-                    app:layout_constraintTop_toTopOf="@id/chipLayout">
+            </com.google.android.material.chip.ChipGroup>
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/firstChip"
-                            style="@style/Widget.MaterialComponents.Chip.Entry"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:checkable="false"
-                            android:fontFamily="@font/nunito_sans_semibold"
-                            android:textColor="#333333"
-                            android:textSize="13sp"
-                            app:closeIconVisible="false"
-                            app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/secondChip"
-                            style="@style/Widget.MaterialComponents.Chip.Entry"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:checkable="false"
-                            android:fontFamily="@font/nunito_sans_semibold"
-                            android:textColor="#333333"
-                            android:textSize="13sp"
-                            android:textStyle="bold"
-                            app:closeIconVisible="false"
-                            app:layout_constraintBottom_toBottomOf="@id/firstChip"
-                            app:layout_constraintLeft_toRightOf="@id/firstChip"
-                            app:layout_constraintTop_toTopOf="@id/firstChip" />
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/thirdChip"
-                            style="@style/Widget.MaterialComponents.Chip.Entry"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:checkable="false"
-                            android:fontFamily="@font/nunito_sans_semibold"
-                            android:textColor="#333333"
-                            android:textSize="13sp"
-                            android:textStyle="bold"
-                            app:closeIconVisible="false"
-                            app:layout_constraintBottom_toBottomOf="@id/secondChip"
-                            app:layout_constraintLeft_toRightOf="@id/secondChip"
-                            app:layout_constraintTop_toTopOf="@id/secondChip" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </com.google.android.material.chip.ChipGroup>
-
-            </LinearLayout>
 
             <!-- Buttons -->
             <androidx.constraintlayout.widget.ConstraintLayout
