@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/purple_200">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvOrderIdLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/order_id"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvOrderIdValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/tvOrderIdLabel"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvOrderCrustLabel"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/crust"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvOrderIdLabel" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvOrderCrustValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@id/tvOrderCrustLabel"
+            app:layout_constraintStart_toEndOf="@id/tvOrderCrustLabel"
+            app:layout_constraintTop_toTopOf="@id/tvOrderCrustLabel" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvOrderFlavourLabel"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/flavour"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvOrderCrustLabel" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvOrderFlavourValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@id/tvOrderFlavourLabel"
+            app:layout_constraintStart_toEndOf="@id/tvOrderFlavourLabel"
+            app:layout_constraintTop_toTopOf="@id/tvOrderFlavourLabel" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvOrderSizeLabel"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/size"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvOrderFlavourLabel" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvOrderSizeValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@id/tvOrderSizeLabel"
+            app:layout_constraintStart_toEndOf="@id/tvOrderSizeLabel"
+            app:layout_constraintTop_toTopOf="@id/tvOrderSizeLabel" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvOrderTableLabel"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/table"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvOrderSizeLabel" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvOrderTableValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@id/tvOrderTableLabel"
+            app:layout_constraintStart_toEndOf="@id/tvOrderTableLabel"
+            app:layout_constraintTop_toTopOf="@id/tvOrderTableLabel" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvOrderTimeLabel"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/time"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvOrderTableLabel" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvOrderTimeValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@id/tvOrderTimeLabel"
+            app:layout_constraintStart_toEndOf="@id/tvOrderTimeLabel"
+            app:layout_constraintTop_toTopOf="@id/tvOrderTimeLabel" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvOrderDateLabel"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/date"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvOrderTimeLabel" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvOrderDateValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@id/tvOrderDateLabel"
+            app:layout_constraintStart_toEndOf="@id/tvOrderDateLabel"
+            app:layout_constraintTop_toTopOf="@id/tvOrderDateLabel" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvOrderDateLabel" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</com.google.android.material.card.MaterialCardView>
