@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firstproject.R
-import com.example.firstproject.model.Profile
+import com.example.firstproject.model.Post
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.squareup.picasso.Picasso
@@ -16,7 +16,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 internal class PostAdapter(
-    private var profileList: List<Profile>,
+    private var postList: List<Post>,
     private val callback: CustomAdapterCallback
 ) :
     RecyclerView.Adapter<PostAdapter.MyViewHolder>() {
@@ -28,16 +28,16 @@ internal class PostAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val imageSorce = profileList[position].user.picture
-        val title = profileList[position].user.title
-        val firstName = profileList[position].user.firstName
-        val lastName = profileList[position].user.lastName
-        val time = profileList[position].publishDate
-        val like = profileList[position].likes
+        val imageSorce = postList[position].user.picture
+        val title = postList[position].text
+        val firstName = postList[position].user.firstName
+        val lastName = postList[position].user.lastName
+        val time = postList[position].publishDate
+        val like = postList[position].likes
 
         //dynamically adding chips in chipGroup
 
-        for (i in profileList[position].tags) {
+        for (i in postList[position].tags) {
             val chip: Chip = Chip(holder.itemView.context)
             chip.text = i
             // chip.chipBackgroundColor= ColorStateList.valueOf(Color.BLUE)
@@ -50,7 +50,7 @@ internal class PostAdapter(
         holder.tvLike.text = like.toString()
 
         holder.btnName.setOnClickListener {
-            callback.onNewsItemClick(profileList[position])
+            callback.onNewsItemClick(postList[position])
         }
     }
 
@@ -65,7 +65,7 @@ internal class PostAdapter(
     }
 
     override fun getItemCount(): Int {
-        return profileList.size
+        return postList.size
     }
 
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -79,6 +79,6 @@ internal class PostAdapter(
     }
 
     interface CustomAdapterCallback {
-        fun onNewsItemClick(item: Profile)
+        fun onNewsItemClick(item: Post)
     }
 }

@@ -4,5 +4,5 @@ import com.google.gson.annotations.SerializedName
 
 class UserData  {
     @SerializedName("data")
-    lateinit var data:List<Profile>
+    lateinit var data:List<Post>
 }

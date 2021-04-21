@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firstproject.R
 import com.example.firstproject.adapter.PostAdapter
-import com.example.firstproject.model.Profile
+import com.example.firstproject.model.Post
 import com.example.firstproject.model.UserData
 import com.example.firstproject.network.ApiInterface
 import com.example.firstproject.network.RetrofitApiClient
@@ -35,7 +35,7 @@ class NewsFragment constructor() : Fragment(), PostAdapter.CustomAdapterCallback
         return view
     }
 
-    override fun onNewsItemClick(item: Profile) {
+    override fun onNewsItemClick(item: Post) {
         val fragment = ProfileDetailsFragment(callback)
         val bundle = Bundle()
         bundle.putString("ownerId", item.user.id)
@@ -54,7 +54,7 @@ class NewsFragment constructor() : Fragment(), PostAdapter.CustomAdapterCallback
         callback?.changeFragment(fragment)
     }
 
-    private fun prepareAdapter(items: List<Profile>, view: View) {
+    private fun prepareAdapter(items: List<Post>, view: View) {
         val recyclerView: RecyclerView = view.findViewById(R.id.recycler_view)
         postAdapter = PostAdapter(items, this)
         val layoutManager = LinearLayoutManager(context)
@@ -63,7 +63,7 @@ class NewsFragment constructor() : Fragment(), PostAdapter.CustomAdapterCallback
     }
 
     private fun prepareItems(view: View) {
-        val dataList = mutableListOf<Profile>()
+        val dataList = mutableListOf<Post>()
 
         val apiInterface: ApiInterface =
             RetrofitApiClient.getClient()!!.create(ApiInterface::class.java)
@@ -73,7 +73,7 @@ class NewsFragment constructor() : Fragment(), PostAdapter.CustomAdapterCallback
             override fun onResponse(call: Call<UserData?>, response: Response<UserData?>) {
                 val myresponse = response.body()
 
-                val list: List<Profile>
+                val list: List<Post>
                 if (response.code() == 200 && myresponse != null) {
                     list = myresponse.data
                     dataList.addAll(list)
