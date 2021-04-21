@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">FirstProject</string>
     <string name="content_description_media">Not Available</string>
+    <string name="_25_minutes_ago">25 minutes ago</string>
+    <string name="shared_a_photo">shared a photo</string>
+    <string name="post">Post</string>
+    <string name="photos">Photos</string>
+    <string name="follower">Follower</string>
+    <string name="_17k">17k</string>
+    <string name="following">Following</string>
+    <string name="posts">Posts</string>
 </resources>

@@ -7,17 +7,17 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:padding="20dp"
         android:layout_height="wrap_content"
-        android:background="#FFFFFF">
+        android:background="#FFFFFF"
+        android:padding="20dp">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imageViewProfile"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:scaleType="centerCrop"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -25,12 +25,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Title"
             android:textColor="#333333"
             android:textSize="14sp"
             android:textStyle="bold"
             app:fontFamily="serif"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imageViewProfile" />
 
         <com.google.android.material.chip.ChipGroup
@@ -39,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvProfileTitle" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -48,11 +47,10 @@
             style="?attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Time"
             android:textColor="#333333"
             android:textSize="12sp"
             app:fontFamily="@font/poppins_regular"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/chipGroup" />
 
         <com.google.android.material.button.MaterialButton
@@ -61,21 +59,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"
-            android:text="name"
             android:textAllCaps="false"
             android:textColor="#333333"
             android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@id/tvPostTime"
-            app:layout_constraintLeft_toRightOf="@id/tvPostTime"
-            app:layout_constraintTop_toTopOf="@id/tvPostTime" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/chipGroup" />
 
         <View
             android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:background="#333333"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvPostTime" />
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -84,20 +80,20 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:src="@drawable/heart"
-            app:layout_constraintRight_toLeftOf="@id/tvLikesCount"
+            app:layout_constraintEnd_toStartOf="@id/tvLikesCount"
             app:layout_constraintTop_toBottomOf="@id/view" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvLikesCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
             android:layout_marginRight="5dp"
             android:fontFamily="@font/poppins_medium"
             android:padding="5dp"
-            android:text="30"
             android:textColor="#333333"
             android:textSize="15sp"
-            app:layout_constraintRight_toLeftOf="@id/ivSharePostLogo"
+            app:layout_constraintEnd_toStartOf="@id/ivSharePostLogo"
             app:layout_constraintTop_toBottomOf="@id/view" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -106,10 +102,9 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
             android:padding="5dp"
-            android:text="30"
             android:textColor="#333333"
             android:textSize="15sp"
-            app:layout_constraintLeft_toRightOf="@id/ivSharePostLogo"
+            app:layout_constraintStart_toEndOf="@id/ivSharePostLogo"
             app:layout_constraintTop_toBottomOf="@id/view" />
 
 
@@ -121,8 +116,8 @@
             android:layout_marginLeft="15dp"
             android:padding="5dp"
             android:src="@drawable/share"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/view" />
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -132,7 +127,7 @@
             android:layout_marginLeft="15dp"
             android:padding="5dp"
             android:src="@drawable/bookmark"
-            app:layout_constraintLeft_toRightOf="@id/tvShareCount"
+            app:layout_constraintStart_toEndOf="@id/tvShareCount"
             app:layout_constraintTop_toBottomOf="@id/view" />
 
 
