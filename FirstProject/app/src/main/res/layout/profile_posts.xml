@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rootLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/profilePhotoConstraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#3F51B5">
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/imageViewProfile"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:padding="10dp"
+                android:src="@drawable/image_person"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvProfileName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:padding="10dp"
+                android:text="NAME"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="@id/imageViewProfile"
+                app:layout_constraintRight_toRightOf="@id/imageViewProfile"
+                app:layout_constraintTop_toBottomOf="@id/imageViewProfile" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvProfileTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:padding="10dp"
+                android:text="DONE"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                app:layout_constraintLeft_toLeftOf="@id/tvProfileName"
+                app:layout_constraintRight_toRightOf="@id/tvProfileName"
+                app:layout_constraintTop_toBottomOf="@id/tvProfileName" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvPostCounter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:padding="10dp"
+            android:text="17k"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="@id/tvPostsCounterLabel"
+            app:layout_constraintRight_toRightOf="@id/tvPostsCounterLabel"
+            app:layout_constraintTop_toBottomOf="@id/profilePhotoConstraintLayout" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvPostsCounterLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Posts"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/poppins_regular"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPostCounter" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvFollowingCounter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:padding="10dp"
+            android:text="17k"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="@id/tvFollowingCounterLabel"
+            app:layout_constraintRight_toRightOf="@id/tvFollowingCounterLabel"
+            app:layout_constraintTop_toBottomOf="@id/profilePhotoConstraintLayout" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvFollowingCounterLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Following"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/poppins_regular"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvFollowingCounter" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvFollowerCounter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:padding="10dp"
+            android:text="17k"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="@id/tvFollowerCounterLabel"
+            app:layout_constraintRight_toRightOf="@id/tvFollowerCounterLabel"
+            app:layout_constraintTop_toBottomOf="@id/profilePhotoConstraintLayout" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvFollowerCounterLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Follower"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/poppins_regular"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvFollowerCounter" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvProfilePhotosLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:padding="10dp"
+            android:text="Photos"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPostsCounterLabel" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:id="@+id/linearLayoutPhotos"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvProfilePhotosLabel" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvPostLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:padding="10dp"
+            android:text="Post"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linearLayoutPhotos" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPostLabel" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

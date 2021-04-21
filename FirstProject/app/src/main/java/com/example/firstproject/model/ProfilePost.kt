@@ -1,7 +1,10 @@
 package com.example.firstproject.model
 
-data class DataX(
+import com.google.gson.annotations.SerializedName
 
+data class ProfilePost(
+
+    @SerializedName("image")
     val image: String,
 //    val likes: Int,
 //    val link: Any,

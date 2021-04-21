@@ -5,13 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firstproject.R
-import com.example.firstproject.adapter.PostAdapter
-import com.example.firstproject.model.DataX
+import com.example.firstproject.adapter.ProfileSpecificPostAdapter
+import com.example.firstproject.model.ProfilePost
 import com.example.firstproject.model.PostData
 import com.example.firstproject.network.ApiInterface
 import com.example.firstproject.network.RetrofitApiClient
@@ -24,18 +26,11 @@ class ProfileDetailsFragment constructor() : Fragment() {
 
     private var id: String? = null
     private var imageSource: String? = null
-    private var firstImageSource: String? = null
-    private var secondImageSource: String? = null
-    private var thirdImageSource: String? = null
-    private var fourthImageSource: String? = null
     private var name: String? = null
 
-    private lateinit var firstPhoto: ImageView
-    private lateinit var secondPhoto: ImageView
-    private lateinit var thirdPhoto: ImageView
-    private lateinit var fourthPhoto: ImageView
+    private lateinit var linearLayout: LinearLayout
 
-    private lateinit var postAdapter: PostAdapter
+    private lateinit var profileSpecificPostAdapter: ProfileSpecificPostAdapter
     private var callback: FragmentCallback? = null
 
     constructor(callback: FragmentCallback?) : this() {
@@ -49,20 +44,17 @@ class ProfileDetailsFragment constructor() : Fragment() {
     ): View {
 
 
-        val view: View = inflater.inflate(R.layout.profile_details, container, false)
+        val view: View = inflater.inflate(R.layout.profile_posts, container, false)
 
         //val back=view.findViewById<Button>(R.id.btnBack)
         id = arguments?.getString("ownerId")
-        val profileImage = view.findViewById<ImageView>(R.id.imageProfile)
-        firstPhoto = view.findViewById<ImageView>(R.id.imgPhotosFirst)
-        secondPhoto = view.findViewById<ImageView>(R.id.imgPhotosSecond)
-        thirdPhoto = view.findViewById<ImageView>(R.id.imgPhotosThird)
-        fourthPhoto = view.findViewById<ImageView>(R.id.imgPhotosFourth)
+        val profileImage = view.findViewById<ImageView>(R.id.imageViewProfile)
         val profileName = view.findViewById<TextView>(R.id.tvProfileName)
         val profileTitle = view.findViewById<TextView>(R.id.tvProfileTitle)
         val postCounter = view.findViewById<TextView>(R.id.tvPostCounter)
-        val followerCounter = view.findViewById<TextView>(R.id.tvFollowersCounter)
+        val followerCounter = view.findViewById<TextView>(R.id.tvFollowerCounter)
         val followingCounter = view.findViewById<TextView>(R.id.tvFollowingCounter)
+        linearLayout=view.findViewById(R.id.linearLayoutPhotos)
         name =
             arguments?.getString("ownerFirstName") + " " + arguments?.getString("ownerLastName")
         imageSource = arguments?.getString("ownerPicture")
@@ -82,26 +74,45 @@ class ProfileDetailsFragment constructor() : Fragment() {
         return view
     }
 
-    private fun prepareAdapter(items: List<DataX>, view: View) {
+    private fun addPhoto(items: List<ProfilePost>, view: View){
+        var counter:Int = 0
+        for(i in items){
+            counter++
+            if(counter>4)break
+            val imageView = ImageView(view.context)
+            //val layoutParams = imageView.layoutParams
+            //imageView.requestLayout()
 
-        firstImageSource = items.get(0).image
-        secondImageSource = items.get(1).image
-        thirdImageSource = items.get(2).image
-        fourthImageSource = items.get(3).image
-        Picasso.with(view.context).load(firstImageSource).into(firstPhoto)
-        Picasso.with(view.context).load(secondImageSource).into(secondPhoto)
-        Picasso.with(view.context).load(thirdImageSource).into(thirdPhoto)
-        Picasso.with(view.context).load(fourthImageSource).into(fourthPhoto)
+            //layoutParams.width = 80
+            //layoutParams.height = 100
+            //imageView.layoutParams=layoutParams
+            Picasso.with(view.context).load(i.image).into(imageView)
+            linearLayout.addView(imageView)
+        }
 
-        val recyclerView: RecyclerView = view.findViewById(R.id.recView)
-        postAdapter = PostAdapter(items, imageSource!!, name!!)
+    }
+
+    private fun prepareAdapter(items: List<ProfilePost>, view: View) {
+
+//        firstImageSource = items.get(0).image
+//        secondImageSource = items.get(1).image
+//        thirdImageSource = items.get(2).image
+//        fourthImageSource = items.get(3).image
+//        Picasso.with(view.context).load(firstImageSource).into(firstPhoto)
+//        Picasso.with(view.context).load(secondImageSource).into(secondPhoto)
+//        Picasso.with(view.context).load(thirdImageSource).into(thirdPhoto)
+//        Picasso.with(view.context).load(fourthImageSource).into(fourthPhoto)
+        addPhoto(items,view)
+
+        val recyclerView: RecyclerView = view.findViewById(R.id.recyclerView)
+        profileSpecificPostAdapter = ProfileSpecificPostAdapter(items, imageSource!!, name!!)
         val layoutManager = LinearLayoutManager(context)
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = postAdapter
+        recyclerView.adapter = profileSpecificPostAdapter
     }
 
     private fun prepareItems(view: View) {
-        val dataList = mutableListOf<DataX>()
+        val dataList = mutableListOf<ProfilePost>()
 
         val apiInterface: ApiInterface =
             RetrofitApiClient.getClient()!!.create(ApiInterface::class.java)
@@ -110,7 +121,7 @@ class ProfileDetailsFragment constructor() : Fragment() {
         call.enqueue(object : Callback<PostData?> {
             override fun onResponse(call: Call<PostData?>, response: Response<PostData?>) {
                 val myResponse = response.body()
-                val list: List<DataX>
+                val list: List<ProfilePost>
                 if (response.code() == 200 && myResponse != null) {
                     list = myResponse.data
                     dataList.addAll(list)

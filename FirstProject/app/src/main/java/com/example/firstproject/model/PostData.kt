@@ -1,7 +1,10 @@
 package com.example.firstproject.model
 
+import com.google.gson.annotations.SerializedName
+
 data class PostData(
-    var data: List<DataX>
+    @SerializedName("data")
+    var data: List<ProfilePost>
 //    val limit: Int,
 //    val offset: Int,
 //    val page: Int,
