@@ -28,7 +28,7 @@ internal class PostAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val imageSorce = postList[position].user.picture
+        val imageSorce = postList[position].image
         val title = postList[position].text
         val firstName = postList[position].user.firstName
         val lastName = postList[position].user.lastName

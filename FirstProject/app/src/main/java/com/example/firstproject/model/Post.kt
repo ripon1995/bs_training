@@ -12,6 +12,8 @@ data class Post(
     val text: String,
     @SerializedName("tags")
     val tags: List<String>,
+    @SerializedName("image")
+    val image:String,
     @SerializedName("likes")
     val likes: Int
 )
