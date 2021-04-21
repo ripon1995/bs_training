@@ -9,8 +9,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firstproject.R
 import com.example.firstproject.dataSource.model.Post
-import com.example.firstproject.ui.features.news.presenter.NewsPresenter
-import com.example.firstproject.ui.features.news.presenter.NewsPresenterImplentation
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.squareup.picasso.Picasso

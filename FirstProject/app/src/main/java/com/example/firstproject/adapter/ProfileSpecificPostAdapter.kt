@@ -16,8 +16,12 @@ internal class ProfileSpecificPostAdapter(
     private var name: String
 ) : RecyclerView.Adapter<ProfileSpecificPostAdapter.MyViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileSpecificPostAdapter.MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.profile_shared_post_item, parent, false)
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): ProfileSpecificPostAdapter.MyViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.profile_shared_post_item, parent, false)
         return MyViewHolder(view)
     }
 

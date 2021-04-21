@@ -8,12 +8,15 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class NewsPresenterImplentation(private val restApiDataSource: RestApiDataSource,private val newsView: NewsView) : NewsPresenter{
+class NewsPresenterImplentation(
+    private val restApiDataSource: RestApiDataSource,
+    private val newsView: NewsView
+) : NewsPresenter {
 
 
     override fun fetchNews() {
         restApiDataSource.fetchNews().enqueue(object : Callback<UserData?> {
-            val dataList= mutableListOf<Post>()
+            val dataList = mutableListOf<Post>()
             override fun onResponse(call: Call<UserData?>, response: Response<UserData?>) {
                 val myresponse = response.body()
 

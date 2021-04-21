@@ -10,11 +10,12 @@ class RestApiDataSourceImplementation : RestApiDataSource {
 
     private val apiInterface: ApiInterface =
         RetrofitApiClient.getClient()!!.create(ApiInterface::class.java)
+
     override fun fetchNews(): Call<UserData> {
         return apiInterface.getData()
     }
 
-    override fun getProfile(id:String): Call<PostData> {
+    override fun getProfile(id: String): Call<PostData> {
         return apiInterface.getPost(id)
     }
 }

@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.firstproject.R
-import com.example.firstproject.fragment.FragmentCallback
+import com.example.firstproject.fragmentCallbacks.FragmentCallback
 
 import com.example.firstproject.ui.features.news.view.NewsFragment
 
