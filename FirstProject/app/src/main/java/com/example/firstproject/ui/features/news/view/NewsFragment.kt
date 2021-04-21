@@ -1,4 +1,4 @@
-package com.example.firstproject.fragment
+package com.example.firstproject.ui.features.news.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,15 +9,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firstproject.R
 import com.example.firstproject.adapter.PostAdapter
-import com.example.firstproject.model.Post
-import com.example.firstproject.model.UserData
+import com.example.firstproject.fragment.FragmentCallback
+import com.example.firstproject.fragment.ProfileDetailsFragment
+import com.example.firstproject.dataSource.model.Post
+import com.example.firstproject.dataSource.model.UserData
 import com.example.firstproject.network.ApiInterface
 import com.example.firstproject.network.RetrofitApiClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class NewsFragment constructor() : Fragment(), PostAdapter.CustomAdapterCallback {
+class NewsFragment constructor() : Fragment(), PostAdapter.CustomAdapterCallback,NewsView {
     private lateinit var postAdapter: PostAdapter
     private var callback: FragmentCallback? = null
 
@@ -31,7 +33,6 @@ class NewsFragment constructor() : Fragment(), PostAdapter.CustomAdapterCallback
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.news, container, false)
-        prepareItems(view)
         return view
     }
 
@@ -53,37 +54,11 @@ class NewsFragment constructor() : Fragment(), PostAdapter.CustomAdapterCallback
         fragment.arguments = bundle
         callback?.changeFragment(fragment)
     }
-
-    private fun prepareAdapter(items: List<Post>, view: View) {
-        val recyclerView: RecyclerView = view.findViewById(R.id.recycler_view)
-        postAdapter = PostAdapter(items, this)
+    override fun showNewsList(newsList: List<Post>) {
+        val recyclerView: RecyclerView? = view?.findViewById(R.id.recycler_view)
+        postAdapter = PostAdapter(newsList, this)
         val layoutManager = LinearLayoutManager(context)
-        recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = postAdapter
-    }
-
-    private fun prepareItems(view: View) {
-        val dataList = mutableListOf<Post>()
-
-        val apiInterface: ApiInterface =
-            RetrofitApiClient.getClient()!!.create(ApiInterface::class.java)
-        val call: Call<UserData> = apiInterface.getData()
-
-        call.enqueue(object : Callback<UserData?> {
-            override fun onResponse(call: Call<UserData?>, response: Response<UserData?>) {
-                val myresponse = response.body()
-
-                val list: List<Post>
-                if (response.code() == 200 && myresponse != null) {
-                    list = myresponse.data
-                    dataList.addAll(list)
-                    prepareAdapter(dataList, view)
-                }
-            }
-
-            override fun onFailure(call: Call<UserData?>, t: Throwable) {
-
-            }
-        })
+        recyclerView?.layoutManager = layoutManager
+        recyclerView?.adapter = postAdapter
     }
 }

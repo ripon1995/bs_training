@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firstproject.R
-import com.example.firstproject.model.ProfilePost
+import com.example.firstproject.dataSource.model.ProfilePost
 import com.squareup.picasso.Picasso
 
 internal class ProfileSpecificPostAdapter(

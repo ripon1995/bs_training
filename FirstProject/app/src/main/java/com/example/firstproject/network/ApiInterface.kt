@@ -1,7 +1,7 @@
 package com.example.firstproject.network
 
-import com.example.firstproject.model.UserData
-import com.example.firstproject.model.PostData
+import com.example.firstproject.dataSource.model.UserData
+import com.example.firstproject.dataSource.model.PostData
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Headers

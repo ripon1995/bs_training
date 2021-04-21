@@ -8,7 +8,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firstproject.R
-import com.example.firstproject.model.Post
+import com.example.firstproject.dataSource.model.Post
+import com.example.firstproject.ui.features.news.presenter.NewsPresenter
+import com.example.firstproject.ui.features.news.presenter.NewsPresenterImplentation
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.squareup.picasso.Picasso
@@ -35,12 +37,9 @@ internal class PostAdapter(
         val time = postList[position].publishDate
         val like = postList[position].likes
 
-        //dynamically adding chips in chipGroup
-
         for (i in postList[position].tags) {
             val chip: Chip = Chip(holder.itemView.context)
             chip.text = i
-            // chip.chipBackgroundColor= ColorStateList.valueOf(Color.BLUE)
             holder.chipGroup.addView(chip)
         }
         Picasso.with(holder.itemView.context).load(imageSorce).into(holder.imageProfile)

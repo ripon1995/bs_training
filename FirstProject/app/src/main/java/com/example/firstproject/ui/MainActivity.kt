@@ -1,11 +1,12 @@
-package com.example.firstproject
+package com.example.firstproject.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.firstproject.R
 import com.example.firstproject.fragment.FragmentCallback
 
-import com.example.firstproject.fragment.NewsFragment
+import com.example.firstproject.ui.features.news.view.NewsFragment
 
 
 class MainActivity : AppCompatActivity(), FragmentCallback {
@@ -15,8 +16,6 @@ class MainActivity : AppCompatActivity(), FragmentCallback {
         setContentView(R.layout.activity_main)
         val newsFragment = NewsFragment(this)
         changeFragment(newsFragment)
-
-
     }
 
     override fun changeFragment(fragment: Fragment) {

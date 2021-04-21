@@ -1,9 +1,8 @@
-package com.example.firstproject.model
+package com.example.firstproject.dataSource.model
 
 import com.google.gson.annotations.SerializedName
 
-data class User(
-
+data class ProfileOwner(
     @SerializedName("email")
     val email: String,
     @SerializedName("firstName")

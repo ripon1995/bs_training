@@ -6,15 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firstproject.R
 import com.example.firstproject.adapter.ProfileSpecificPostAdapter
-import com.example.firstproject.model.ProfilePost
-import com.example.firstproject.model.PostData
+import com.example.firstproject.dataSource.model.ProfilePost
+import com.example.firstproject.dataSource.model.PostData
 import com.example.firstproject.network.ApiInterface
 import com.example.firstproject.network.RetrofitApiClient
 import com.squareup.picasso.Picasso
