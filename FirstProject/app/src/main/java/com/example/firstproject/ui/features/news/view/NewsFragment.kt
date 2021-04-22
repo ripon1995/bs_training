@@ -14,7 +14,7 @@ import com.example.firstproject.dataSource.model.Post
 import com.example.firstproject.fragmentCallbacks.FragmentCallback
 import com.example.firstproject.ui.features.news.presenter.NewsPresenter
 import com.example.firstproject.ui.features.news.presenter.NewsPresenterImplentation
-import com.example.firstproject.ui.features.profile.view.ProfileDetailsFragment
+import com.example.firstproject.ui.features.profile.view.ProfileDetailsInfoAndPostFragment
 
 class NewsFragment constructor() : Fragment(), PostAdapter.CustomAdapterCallback, NewsView {
     private lateinit var postAdapter: PostAdapter
@@ -47,19 +47,12 @@ class NewsFragment constructor() : Fragment(), PostAdapter.CustomAdapterCallback
     }
 
     override fun onNewsItemClick(item: Post) {
-        val fragment = ProfileDetailsFragment(callback)
+        val fragment = ProfileDetailsInfoAndPostFragment(callback)
         val bundle = Bundle()
         bundle.putString("ownerId", item.user.id)
-        bundle.putString("ownerEmail", item.user.email)
-        bundle.putString("ownerTitle", item.user.title)
         bundle.putString("ownerPicture", item.user.picture)
         bundle.putString("ownerFirstName", item.user.firstName)
         bundle.putString("ownerLastName", item.user.lastName)
-        bundle.putString("publishDate", item.publishDate)
-        bundle.putInt("likes", item.likes)
-        bundle.putString("firstChip", item.tags.get(0))
-        bundle.putString("secondChip", item.tags.get(1))
-        bundle.putString("thirdChip", item.tags.get(2))
         fragment.arguments = bundle
         callback?.changeFragment(fragment)
     }

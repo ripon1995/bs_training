@@ -8,14 +8,14 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ProfilePresenterImplementation(
+class ProfilePostPresenterImplementation(
     private val restApiDataSource: RestApiDataSource,
     private val profileView: ProfileView,
-    private val id: String
-) : ProfilePresenter {
-    override fun fetchProfile() {
 
-        restApiDataSource.getProfile(id).enqueue(object : Callback<PostData?> {
+) : ProfilePostPresenter {
+    override fun fetchProfilePost(id:String) {
+
+        restApiDataSource.fetchProfilePost(id).enqueue(object : Callback<PostData?> {
             val dataList = mutableListOf<ProfilePost>()
             override fun onResponse(call: Call<PostData?>, response: Response<PostData?>) {
                 val myResponse = response.body()
@@ -23,7 +23,7 @@ class ProfilePresenterImplementation(
                 if (response.code() == 200 && myResponse != null) {
                     list = myResponse.data
                     dataList.addAll(list)
-                    profileView.showProfileList(dataList)
+                    profileView.showProfilePostList(dataList)
                 }
             }
 

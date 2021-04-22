@@ -1,6 +1,7 @@
 package com.example.firstproject.dataSource
 
 import com.example.firstproject.dataSource.model.PostData
+import com.example.firstproject.dataSource.model.ProfileOwner
 import com.example.firstproject.dataSource.model.UserData
 import com.example.firstproject.network.ApiInterface
 import com.example.firstproject.network.RetrofitApiClient
@@ -15,7 +16,11 @@ class RestApiDataSourceImplementation : RestApiDataSource {
         return apiInterface.getData()
     }
 
-    override fun getProfile(id: String): Call<PostData> {
+    override fun fetchProfilePost(id: String): Call<PostData> {
         return apiInterface.getPost(id)
+    }
+
+    override fun fetchProfileDetails(id: String): Call<ProfileOwner> {
+        return apiInterface.getProfileDetails(id)
     }
 }

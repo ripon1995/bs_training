@@ -10,11 +10,11 @@ import com.example.firstproject.R
 import com.example.firstproject.dataSource.model.ProfilePost
 import com.squareup.picasso.Picasso
 
-internal class ProfileSpecificPostAdapter(
+internal class ProfilePostAdapter(
     private var dataList: List<ProfilePost>,
     private var imageSource: String,
     private var name: String
-) : RecyclerView.Adapter<ProfileSpecificPostAdapter.MyViewHolder>() {
+) : RecyclerView.Adapter<ProfilePostAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,

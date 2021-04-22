@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity(), FragmentCallback {
     override fun changeFragment(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.frameLayout, fragment)
+        transaction.addToBackStack("done")
         transaction.commit()
     }
 }
