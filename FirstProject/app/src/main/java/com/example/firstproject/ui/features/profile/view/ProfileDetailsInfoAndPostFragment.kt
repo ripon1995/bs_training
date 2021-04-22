@@ -16,8 +16,6 @@ import com.example.firstproject.dataSource.RestApiDataSourceImplementation
 import com.example.firstproject.dataSource.model.ProfileOwner
 import com.example.firstproject.dataSource.model.ProfilePost
 import com.example.firstproject.fragmentCallbacks.FragmentCallback
-import com.example.firstproject.ui.features.profile.presenter.ProfileDetailsInfoPresenter
-import com.example.firstproject.ui.features.profile.presenter.ProfileDetailsInfoPresenterImplementation
 import com.example.firstproject.ui.features.profile.presenter.ProfilePostPresenter
 import com.example.firstproject.ui.features.profile.presenter.ProfilePostPresenterImplementation
 import com.squareup.picasso.Picasso
@@ -38,7 +36,6 @@ class ProfileDetailsInfoAndPostFragment constructor() : Fragment(), ProfileView 
     private lateinit var linearLayout: LinearLayout
     private lateinit var restApiDataSourceImplementation: RestApiDataSource
     private lateinit var profilePostPresenterImplementation: ProfilePostPresenter
-    private lateinit var profileDetailsInfoPresenterImplementation: ProfileDetailsInfoPresenter
     private lateinit var profilePostAdapter: ProfilePostAdapter
     private var callback: FragmentCallback? = null
 
@@ -52,15 +49,13 @@ class ProfileDetailsInfoAndPostFragment constructor() : Fragment(), ProfileView 
         restApiDataSourceImplementation = RestApiDataSourceImplementation()
         profilePostPresenterImplementation =
             ProfilePostPresenterImplementation(restApiDataSourceImplementation, this)
-        profileDetailsInfoPresenterImplementation =
-            ProfileDetailsInfoPresenterImplementation(restApiDataSourceImplementation, this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         id?.let {
             profilePostPresenterImplementation.fetchProfilePost(it)
-            profileDetailsInfoPresenterImplementation.fetchProfileInfo(it)
+            profilePostPresenterImplementation.fetchProfileInfo(it)
         }
 
     }
