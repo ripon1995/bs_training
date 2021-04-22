@@ -7,6 +7,5 @@ import retrofit2.Call
 interface RestApiDataSource {
 
     fun fetchNews(): Call<UserData>
-
     fun getProfile(id: String): Call<PostData>
 }

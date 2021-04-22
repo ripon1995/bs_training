@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firstproject.R
-import com.example.firstproject.adapter.ProfileSpecificPostAdapter
 import com.example.firstproject.dataSource.RestApiDataSource
 import com.example.firstproject.dataSource.RestApiDataSourceImplementation
 import com.example.firstproject.dataSource.model.ProfilePost

@@ -1,4 +1,4 @@
-package com.example.firstproject.adapter
+package com.example.firstproject.ui.features.news.view
 
 import android.view.LayoutInflater
 import android.view.View

@@ -1,4 +1,4 @@
-package com.example.firstproject.adapter
+package com.example.firstproject.ui.features.profile.view
 
 import android.view.LayoutInflater
 import android.view.View
@@ -19,13 +19,13 @@ internal class ProfileSpecificPostAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): ProfileSpecificPostAdapter.MyViewHolder {
+    ): MyViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.profile_shared_post_item, parent, false)
         return MyViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ProfileSpecificPostAdapter.MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
         val postImageSource: String = dataList[position].image
         Picasso.with(holder.itemView.context).load(postImageSource).into(holder.imageView)
