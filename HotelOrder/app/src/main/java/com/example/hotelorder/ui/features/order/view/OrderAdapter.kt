@@ -1,4 +1,4 @@
-package com.example.hotelorder.adapter
+package com.example.hotelorder.ui.features.order.view
 
 import android.view.LayoutInflater
 import android.view.View
@@ -15,13 +15,13 @@ class OrderAdapter(private var orderList: List<OrderItem>) :
     RecyclerView.Adapter<OrderAdapter.MyViewHolder>() {
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderAdapter.MyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView =
             LayoutInflater.from(parent.context).inflate(R.layout.order_item, parent, false)
         return MyViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: OrderAdapter.MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.tvOrderIdValue.text = orderList[position].Order_ID.toString()
         holder.tvOrderCrustValue.text = orderList[position].Crust
         holder.tvOrderFlavorValue.text = orderList[position].Flavor

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hotelorder.R
-import com.example.hotelorder.adapter.OrderAdapter
 import com.example.hotelorder.dataSource.RestApiDataSource
 import com.example.hotelorder.dataSource.RestApiDataSourceImplementation
 import com.example.hotelorder.dataSource.model.OrderItem
