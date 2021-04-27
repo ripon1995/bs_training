@@ -1,11 +1,12 @@
 package com.example.firstproject.di
 
-import com.example.firstproject.ui.features.profile.presenter.ProfilePostPresenter
-import com.example.firstproject.ui.features.profile.presenter.ProfilePostPresenterImplementation
+import androidx.lifecycle.ViewModel
+import com.example.firstproject.ui.features.profile.presenter.ProfilePostViewModel
 import com.example.firstproject.ui.features.profile.view.ProfileDetailsInfoAndPostFragment
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
+import dagger.multibindings.IntoMap
 
 @Module
 abstract class ProfileViewModule {
@@ -14,5 +15,7 @@ abstract class ProfileViewModule {
     abstract fun bindProfileDetailsInfoAndPostFragment(): ProfileDetailsInfoAndPostFragment
 
     @Binds
-    abstract fun bindProfilePostPresenter(profilePostPresenterImplementation: ProfilePostPresenterImplementation): ProfilePostPresenter
+    @IntoMap
+    @ViewModelKey(ProfilePostViewModel::class)
+    abstract fun bindProfilePostPresenter(profilePostViewModel: ProfilePostViewModel): ViewModel
 }

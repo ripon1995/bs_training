@@ -1,5 +1,7 @@
 package com.example.firstproject.ui.features.profile.presenter
 
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.example.firstproject.dataSource.RestApiDataSource
 import com.example.firstproject.dataSource.model.PostData
 import com.example.firstproject.dataSource.model.ProfileOwner
@@ -9,11 +11,12 @@ import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 
-class ProfilePostPresenterImplementation @Inject constructor(
+class ProfilePostViewModel @Inject constructor(
     private val restApiDataSource: RestApiDataSource,
-) : ProfilePostPresenter() {
-
-    override fun fetchProfilePost(id: String) {
+) : ViewModel() {
+    val profilePostListLiveData = MutableLiveData<List<ProfilePost>>()
+    val profileInfoListLiveData = MutableLiveData<ProfileOwner>()
+    fun fetchProfilePost(id: String) {
 
         restApiDataSource.fetchProfilePost(id).enqueue(object : Callback<PostData?> {
             val dataList = mutableListOf<ProfilePost>()
@@ -24,8 +27,10 @@ class ProfilePostPresenterImplementation @Inject constructor(
                     list = myResponse.data
                     dataList.addAll(list)
                     //profileView.showProfilePostList(dataList)
-                    view.get()?.showProfilePostList(dataList)
+                    //view.get()?.showProfilePostList(dataList)
+                    profilePostListLiveData.value = dataList
                 }
+
 
             }
 
@@ -36,7 +41,7 @@ class ProfilePostPresenterImplementation @Inject constructor(
         })
     }
 
-    override fun fetchProfileInfo(id: String) {
+    fun fetchProfileInfo(id: String) {
         restApiDataSource.fetchProfileDetails(id).enqueue(object : Callback<ProfileOwner?> {
             override fun onResponse(call: Call<ProfileOwner?>, response: Response<ProfileOwner?>) {
                 val data: ProfileOwner
@@ -44,7 +49,8 @@ class ProfilePostPresenterImplementation @Inject constructor(
                 if (response.code() == 200 && myResponse != null) {
                     data = myResponse
                     //profileView.showProfileInfoDetails(data)
-                    view.get()?.showProfileInfoDetails(data)
+                    //view.get()?.showProfileInfoDetails(data)
+                    profileInfoListLiveData.value = data
                 }
             }
 

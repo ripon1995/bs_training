@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firstproject.R
 import com.example.firstproject.dataSource.model.Post
 import com.example.firstproject.fragmentCallbacks.FragmentCallback
-import com.example.firstproject.ui.features.news.presenter.NewsPresenter
+import com.example.firstproject.ui.features.news.presenter.NewsViewModel
 import com.example.firstproject.ui.features.profile.view.ProfileDetailsInfoAndPostFragment
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
@@ -20,7 +22,9 @@ class NewsFragment constructor() : DaggerFragment(), PostAdapter.CustomAdapterCa
     private var callback: FragmentCallback? = null
 
     @Inject
-    lateinit var newsPresenter: NewsPresenter
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    lateinit var newsViewModel: NewsViewModel
 
     constructor(callback: FragmentCallback) : this() {
         this.callback = callback
@@ -28,7 +32,7 @@ class NewsFragment constructor() : DaggerFragment(), PostAdapter.CustomAdapterCa
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        newsPresenter.bindView(this)
+        newsViewModel = ViewModelProvider(this, viewModelFactory).get(NewsViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -42,12 +46,10 @@ class NewsFragment constructor() : DaggerFragment(), PostAdapter.CustomAdapterCa
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        newsPresenter.fetchNews()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        newsPresenter.detachView()
+        newsViewModel.postListLiveData.observe(viewLifecycleOwner, Observer {
+            showNewsList(it)
+        })
+        newsViewModel.fetchNews()
     }
 
     override fun onNewsItemClick(item: Post) {

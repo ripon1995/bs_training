@@ -13,7 +13,8 @@ import javax.inject.Singleton
         ActivityModule::class,
         RestApiDataSourceModule::class,
         NewsViewModule::class,
-        ProfileViewModule::class]
+        ProfileViewModule::class,
+        AppModule::class]
 )
 @Singleton
 interface AppComponent : AndroidInjector<MyApplication> {

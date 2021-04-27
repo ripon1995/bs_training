@@ -1,5 +1,7 @@
 package com.example.firstproject.ui.features.news.presenter
 
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.example.firstproject.dataSource.RestApiDataSource
 import com.example.firstproject.dataSource.model.Post
 import com.example.firstproject.dataSource.model.UserData
@@ -8,11 +10,12 @@ import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 
-class NewsPresenterImplentation @Inject constructor(
+class NewsViewModel @Inject constructor(
     private val restApiDataSource: RestApiDataSource
-) : NewsPresenter() {
+) : ViewModel() {
 
-    override fun fetchNews() {
+    val postListLiveData = MutableLiveData<List<Post>>()
+    fun fetchNews() {
         restApiDataSource.fetchNews().enqueue(object : Callback<UserData?> {
             val dataList = mutableListOf<Post>()
             override fun onResponse(call: Call<UserData?>, response: Response<UserData?>) {
@@ -22,7 +25,10 @@ class NewsPresenterImplentation @Inject constructor(
                 if (response.code() == 200 && myresponse != null) {
                     list = myresponse.data
                     dataList.addAll(list)
-                    view.get()?.showNewsList(dataList)
+                    //view.get()?.showNewsList(dataList)
+                    postListLiveData.value = dataList
+
+
                 }
             }
 

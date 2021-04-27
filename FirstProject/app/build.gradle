@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id  'kotlin-kapt'
 }
 
 android {
@@ -31,10 +32,10 @@ android {
         jvmTarget = '1.8'
     }
 }
-apply plugin: 'kotlin-kapt'
+
 dependencies {
 
-
+    def lifecycle_version = "2.3.1"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.3.2'
@@ -60,4 +61,18 @@ dependencies {
     api 'com.google.dagger:dagger-android-support:2.27' // if you use the support libraries
     kapt 'com.google.dagger:dagger-android-processor:2.27'
     kapt 'com.google.dagger:dagger-compiler:2.27'
+
+    //view model
+
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+
+    // Annotation processor
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+
+
+
+
 }

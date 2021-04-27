@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firstproject.R
@@ -15,7 +17,7 @@ import com.example.firstproject.dataSource.RestApiDataSourceImplementation
 import com.example.firstproject.dataSource.model.ProfileOwner
 import com.example.firstproject.dataSource.model.ProfilePost
 import com.example.firstproject.fragmentCallbacks.FragmentCallback
-import com.example.firstproject.ui.features.profile.presenter.ProfilePostPresenter
+import com.example.firstproject.ui.features.profile.presenter.ProfilePostViewModel
 import com.squareup.picasso.Picasso
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
@@ -32,12 +34,16 @@ class ProfileDetailsInfoAndPostFragment constructor() : DaggerFragment(), Profil
     private var followerCounter: TextView? = null
     private var followingCounter: TextView? = null
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    lateinit var profilePostViewModel: ProfilePostViewModel
 
     private lateinit var linearLayout: LinearLayout
     private lateinit var restApiDataSourceImplementation: RestApiDataSource
 
-    @Inject
-    lateinit var profilePostPresenter: ProfilePostPresenter
+    //    @Inject
+//    lateinit var profilePostPresenter: ProfilePostPresenter
     private lateinit var profilePostAdapter: ProfilePostAdapter
     private var callback: FragmentCallback? = null
 
@@ -50,23 +56,27 @@ class ProfileDetailsInfoAndPostFragment constructor() : DaggerFragment(), Profil
         super.onCreate(savedInstanceState)
 
         restApiDataSourceImplementation = RestApiDataSourceImplementation()
-        profilePostPresenter.bindView(this)
+        profilePostViewModel =
+            ViewModelProvider(this, viewModelFactory).get(ProfilePostViewModel::class.java)
+//        profilePostPresenter.bindView(this)
 //        profilePostPresenter =
 //            ProfilePostPresenterImplementation(restApiDataSourceImplementation, this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        profilePostViewModel.profilePostListLiveData.observe(viewLifecycleOwner, Observer {
+            showProfilePostList(it)
+        })
+        profilePostViewModel.profileInfoListLiveData.observe(viewLifecycleOwner, Observer {
+            showProfileInfoDetails(it)
+        })
         id?.let {
-            profilePostPresenter.fetchProfilePost(it)
-            profilePostPresenter.fetchProfileInfo(it)
+            profilePostViewModel.fetchProfilePost(it)
+            profilePostViewModel.fetchProfileInfo(it)
         }
 
-    }
 
-    override fun onStop() {
-        super.onStop()
-        profilePostPresenter.detachView()
     }
 
     override fun onCreateView(
