@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firstproject.R
@@ -17,10 +16,11 @@ import com.example.firstproject.dataSource.model.ProfileOwner
 import com.example.firstproject.dataSource.model.ProfilePost
 import com.example.firstproject.fragmentCallbacks.FragmentCallback
 import com.example.firstproject.ui.features.profile.presenter.ProfilePostPresenter
-import com.example.firstproject.ui.features.profile.presenter.ProfilePostPresenterImplementation
 import com.squareup.picasso.Picasso
+import dagger.android.support.DaggerFragment
+import javax.inject.Inject
 
-class ProfileDetailsInfoAndPostFragment constructor() : Fragment(), ProfileView {
+class ProfileDetailsInfoAndPostFragment constructor() : DaggerFragment(), ProfileView {
 
     private var id: String? = null
     private var imageSource: String? = null
@@ -35,7 +35,9 @@ class ProfileDetailsInfoAndPostFragment constructor() : Fragment(), ProfileView 
 
     private lateinit var linearLayout: LinearLayout
     private lateinit var restApiDataSourceImplementation: RestApiDataSource
-    private lateinit var profilePostPresenterImplementation: ProfilePostPresenter
+
+    @Inject
+    lateinit var profilePostPresenter: ProfilePostPresenter
     private lateinit var profilePostAdapter: ProfilePostAdapter
     private var callback: FragmentCallback? = null
 
@@ -46,18 +48,25 @@ class ProfileDetailsInfoAndPostFragment constructor() : Fragment(), ProfileView 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         restApiDataSourceImplementation = RestApiDataSourceImplementation()
-        profilePostPresenterImplementation =
-            ProfilePostPresenterImplementation(restApiDataSourceImplementation, this)
+        profilePostPresenter.bindView(this)
+//        profilePostPresenter =
+//            ProfilePostPresenterImplementation(restApiDataSourceImplementation, this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         id?.let {
-            profilePostPresenterImplementation.fetchProfilePost(it)
-            profilePostPresenterImplementation.fetchProfileInfo(it)
+            profilePostPresenter.fetchProfilePost(it)
+            profilePostPresenter.fetchProfileInfo(it)
         }
 
+    }
+
+    override fun onStop() {
+        super.onStop()
+        profilePostPresenter.detachView()
     }
 
     override fun onCreateView(

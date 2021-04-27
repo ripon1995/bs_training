@@ -6,8 +6,9 @@ import com.example.firstproject.dataSource.model.UserData
 import com.example.firstproject.network.ApiInterface
 import com.example.firstproject.network.RetrofitApiClient
 import retrofit2.Call
+import javax.inject.Inject
 
-class RestApiDataSourceImplementation : RestApiDataSource {
+class RestApiDataSourceImplementation @Inject constructor() : RestApiDataSource {
 
     private val apiInterface: ApiInterface =
         RetrofitApiClient.getClient()!!.create(ApiInterface::class.java)

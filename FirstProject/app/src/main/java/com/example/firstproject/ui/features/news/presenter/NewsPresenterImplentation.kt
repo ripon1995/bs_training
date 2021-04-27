@@ -3,16 +3,14 @@ package com.example.firstproject.ui.features.news.presenter
 import com.example.firstproject.dataSource.RestApiDataSource
 import com.example.firstproject.dataSource.model.Post
 import com.example.firstproject.dataSource.model.UserData
-import com.example.firstproject.ui.features.news.view.NewsView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
-class NewsPresenterImplentation(
-    private val restApiDataSource: RestApiDataSource,
-    private val newsView: NewsView
-) : NewsPresenter {
-
+class NewsPresenterImplentation @Inject constructor(
+    private val restApiDataSource: RestApiDataSource
+) : NewsPresenter() {
 
     override fun fetchNews() {
         restApiDataSource.fetchNews().enqueue(object : Callback<UserData?> {
@@ -24,7 +22,7 @@ class NewsPresenterImplentation(
                 if (response.code() == 200 && myresponse != null) {
                     list = myresponse.data
                     dataList.addAll(list)
-                    newsView.showNewsList(dataList)
+                    view.get()?.showNewsList(dataList)
                 }
             }
 

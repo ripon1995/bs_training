@@ -1,15 +1,14 @@
 package com.example.firstproject.ui
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.firstproject.R
 import com.example.firstproject.fragmentCallbacks.FragmentCallback
-
 import com.example.firstproject.ui.features.news.view.NewsFragment
+import dagger.android.support.DaggerAppCompatActivity
 
 
-class MainActivity : AppCompatActivity(), FragmentCallback {
+class MainActivity : DaggerAppCompatActivity(), FragmentCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -15,7 +15,7 @@ import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat
 import java.util.*
 
-internal class PostAdapter(
+class PostAdapter(
     private var postList: List<Post>,
     private val callback: CustomAdapterCallback
 ) :
