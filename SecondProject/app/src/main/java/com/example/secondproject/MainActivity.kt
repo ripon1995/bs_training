@@ -5,39 +5,37 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.secondproject.dataSource.RestApiDataSource
 import com.example.secondproject.dataSource.RestApiDataSourceImplementation
 import com.example.secondproject.dataSource.model.NewsStoryDetails
-import com.example.secondproject.ui.feature.newsId.Presenter.NewsIdPresenter
-import com.example.secondproject.ui.feature.newsId.Presenter.NewsIdPresenterImplementation
-import com.example.secondproject.ui.feature.newsId.view.NewsIdListView
-import com.example.secondproject.ui.feature.newsStoriesDetails.presenter.NewsDetailsPresenter
-import com.example.secondproject.ui.feature.newsStoriesDetails.presenter.NewsDetailsPresenterImplementation
-import com.example.secondproject.ui.feature.newsStoriesDetails.view.NewsDetailsView
+import com.example.secondproject.ui.feature.news.presenter.NewsPresenter
+import com.example.secondproject.ui.feature.news.presenter.NewsPresenterImplementation
+import com.example.secondproject.ui.feature.news.view.NewsView
+
 import io.reactivex.disposables.CompositeDisposable
 
-class MainActivity : AppCompatActivity(), NewsIdListView, NewsDetailsView {
+class MainActivity : AppCompatActivity(), NewsView {
 
-    private lateinit var newsIdPresenter: NewsIdPresenter
+    private lateinit var newsPresenter: NewsPresenter
     private lateinit var restApiDataSource: RestApiDataSource
-    private lateinit var newsDetailsPresenter: NewsDetailsPresenter
+
     var compositeDisposable: CompositeDisposable = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         restApiDataSource = RestApiDataSourceImplementation()
-        newsIdPresenter =
-            NewsIdPresenterImplementation(restApiDataSource, this, compositeDisposable)
-        newsIdPresenter.fetchNewsStoryId()
+        newsPresenter =
+            NewsPresenterImplementation(restApiDataSource, this, compositeDisposable)
+        newsPresenter.fetchNewsStoryId()
 
     }
 
     override fun showNewsIdList(newsIdList: List<Int>) {
-        for (i in newsIdList) {
-            println("ID: " + i)
-            newsDetailsPresenter =
-                NewsDetailsPresenterImplementation(restApiDataSource, this, compositeDisposable)
-            newsDetailsPresenter.fetchNewsDetails(i)
+        for (i in newsIdList){
+            println("ID: "+i)
+            newsPresenter = NewsPresenterImplementation(restApiDataSource,this,compositeDisposable)
+            newsPresenter.fetchNewsDetails(i)
         }
     }
+
 
     override fun showNewsDetails(newsStoryDetails: NewsStoryDetails) {
         println(newsStoryDetails.by)

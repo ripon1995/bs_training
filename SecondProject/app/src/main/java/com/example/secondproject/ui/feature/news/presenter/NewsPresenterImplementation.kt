@@ -1,16 +1,16 @@
-package com.example.secondproject.ui.feature.newsId.Presenter
+package com.example.secondproject.ui.feature.news.presenter
 
 import com.example.secondproject.dataSource.RestApiDataSource
-import com.example.secondproject.ui.feature.newsId.view.NewsIdListView
+import com.example.secondproject.ui.feature.news.view.NewsView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class NewsIdPresenterImplementation(
+class NewsPresenterImplementation(
     private var restApiDataSource: RestApiDataSource,
-    private var newsIdListView: NewsIdListView,
+    private var newsView: NewsView,
     var compositeDisposable: CompositeDisposable
-) : NewsIdPresenter {
+) : NewsPresenter {
     override fun fetchNewsStoryId() {
 
         compositeDisposable.add(
@@ -18,10 +18,22 @@ class NewsIdPresenterImplementation(
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    newsIdListView.showNewsIdList(it)
+                    newsView.showNewsIdList(it)
                 }, {
                     println("Error: " + it.message)
                 })
         )
     }
+    override fun fetchNewsDetails(id: Int) {
+
+        compositeDisposable.add(
+            restApiDataSource.fetchNewsSotriesDetails(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    newsView.showNewsDetails(it)
+                })
+        )
+    }
+
 }
