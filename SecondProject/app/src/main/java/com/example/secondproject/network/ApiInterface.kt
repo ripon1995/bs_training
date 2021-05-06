@@ -1,6 +1,6 @@
 package com.example.secondproject.network
 
-import com.example.secondproject.dataSource.model.NewsStoryDetails
+import com.example.secondproject.repository.model.NewsStoryDetails
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path

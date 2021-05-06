@@ -1,47 +1,38 @@
 package com.example.secondproject
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.example.secondproject.dataSource.RestApiDataSource
-import com.example.secondproject.dataSource.RestApiDataSourceImplementation
-import com.example.secondproject.dataSource.model.NewsStoryDetails
-import com.example.secondproject.ui.feature.news.presenter.NewsPresenter
-import com.example.secondproject.ui.feature.news.presenter.NewsPresenterImplementation
-import com.example.secondproject.ui.feature.news.view.NewsView
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import com.example.secondproject.viewModel.MainActivityViewModel
+import kotlin.math.log
 
-import io.reactivex.disposables.CompositeDisposable
+class MainActivity : AppCompatActivity() {
 
-class MainActivity : AppCompatActivity(), NewsView {
+    private val mainActivityViewModel by lazy { ViewModelProviders.of(this).get(MainActivityViewModel::class.java) }
 
-    private lateinit var newsPresenter: NewsPresenter
-    private lateinit var restApiDataSource: RestApiDataSource
-
-    var compositeDisposable: CompositeDisposable = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        restApiDataSource = RestApiDataSourceImplementation()
-        newsPresenter =
-            NewsPresenterImplementation(restApiDataSource, this, compositeDisposable)
-        newsPresenter.fetchNewsStoryId()
+        mainActivityViewModel.fetchNewsStoryId()
+        mainActivityViewModel.newsDetailsLiveData.observe(this){
+            if(it.type == "story")
+            {
+                Log.d("MAIN: ", "onCreate: BY: "+it.by)
+                Log.d("MAIN: ", "onCreate: TITLE: "+it.title)
+            }
+            else
+            {
+                Log.d("MAIN", "onCreate: "+"not found")
+            }
+            //Log.d("MAIN ACTIVITY: ", "onCreate: SCORE: "+it.score)
 
-    }
-
-    override fun showNewsIdList(newsIdList: List<Int>) {
-        for (i in newsIdList){
-            println("ID: "+i)
-            newsPresenter = NewsPresenterImplementation(restApiDataSource,this,compositeDisposable)
-            newsPresenter.fetchNewsDetails(i)
+            //Log.d("MAIN ACTIVITY: ", "onCreate: TYPE: "+it.type)
         }
+
     }
 
-
-    override fun showNewsDetails(newsStoryDetails: NewsStoryDetails) {
-        println(newsStoryDetails.by)
-        println(newsStoryDetails.descendants)
-        println(newsStoryDetails.id)
-        println(newsStoryDetails.score)
-        println(newsStoryDetails.title)
-    }
 }
