@@ -1,6 +1,5 @@
 package com.example.secondproject.viewModel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.secondproject.repository.RestApiDataSource
@@ -9,13 +8,14 @@ import com.example.secondproject.repository.model.NewsStoryDetails
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
-class MainActivityViewModel(
+class MainActivityViewModel @Inject constructor(private var restApiDataSource: RestApiDataSource
 ) : ViewModel() {
-    private var compositeDisposable:CompositeDisposable = CompositeDisposable()
-    private var restApiDataSource: RestApiDataSource = RestApiDataSourceImplementation()
+    private var compositeDisposable: CompositeDisposable = CompositeDisposable()
+    // = RestApiDataSourceImplementation()
 
-      var newsDetailsLiveData:MutableLiveData<NewsStoryDetails> = MutableLiveData<NewsStoryDetails>()
+    var newsDetailsLiveData: MutableLiveData<NewsStoryDetails> = MutableLiveData<NewsStoryDetails>()
 
     fun fetchNewsStoryId() {
 
@@ -32,8 +32,8 @@ class MainActivityViewModel(
     }
 
     fun showNewsIdList(newsIdList: List<Int>) {
-        for (i in newsIdList){
-            println("ID: "+i)
+        for (i in newsIdList) {
+            println("ID: " + i)
             fetchNewsDetails(i)
         }
     }
@@ -50,8 +50,6 @@ class MainActivityViewModel(
                 })
         )
     }
-
-
 
     fun showNewsDetails(newsStoryDetails: NewsStoryDetails) {
         println(newsStoryDetails.by)

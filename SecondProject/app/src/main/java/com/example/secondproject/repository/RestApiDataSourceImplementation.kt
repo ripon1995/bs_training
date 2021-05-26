@@ -4,8 +4,9 @@ import com.example.secondproject.repository.model.NewsStoryDetails
 import com.example.secondproject.network.ApiInterface
 import com.example.secondproject.network.RetrofitApiClient
 import io.reactivex.Observable
+import javax.inject.Inject
 
-class RestApiDataSourceImplementation : RestApiDataSource {
+class RestApiDataSourceImplementation @Inject constructor() : RestApiDataSource {
 
     private val apiInterface: ApiInterface =
         RetrofitApiClient.getId()!!.create(ApiInterface::class.java)
