@@ -10,21 +10,25 @@ import com.example.hotelorderwithdi.R
 import com.example.hotelorderwithdi.dataSource.remoteDataSource.RestApiDataSourceImplementation
 import com.example.hotelorderwithdi.viewModel.MainActivityViewModel
 import com.example.hotelorderwithdi.viewModel.SampleViewModelFactory
+import dagger.android.support.DaggerAppCompatActivity
+import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : DaggerAppCompatActivity() {
 
 
     lateinit var mainActivityViewModel: MainActivityViewModel
+
+    @Inject
+    lateinit var sampleViewModelFactory: SampleViewModelFactory
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val restApiDataSourceImplementation = RestApiDataSourceImplementation()
-        val factory = SampleViewModelFactory(restApiDataSourceImplementation)
+
         mainActivityViewModel =
-            ViewModelProvider(this, factory).get(MainActivityViewModel::class.java)
+            ViewModelProvider(this, sampleViewModelFactory).get(MainActivityViewModel::class.java)
         mainActivityViewModel.fetchOrderDetails()
         mainActivityViewModel.orderListLiveData.observe(this) {
             showOrderList(it)
