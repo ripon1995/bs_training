@@ -1,4 +1,4 @@
-package com.example.hotelorderwithdi.ui.view
+package com.example.hotelorderwithdi.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View

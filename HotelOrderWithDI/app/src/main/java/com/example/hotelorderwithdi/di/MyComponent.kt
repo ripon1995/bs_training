@@ -2,13 +2,10 @@ package com.example.hotelorderwithdi.di
 
 import android.app.Application
 import com.example.hotelorderwithdi.MyApplication
-import com.example.hotelorderwithdi.ui.view.MainActivity
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
-import dagger.assisted.AssistedFactory
-import javax.inject.Scope
 import javax.inject.Singleton
 
 @Component(
