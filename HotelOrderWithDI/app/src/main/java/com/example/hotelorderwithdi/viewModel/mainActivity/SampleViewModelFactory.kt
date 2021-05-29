@@ -1,4 +1,4 @@
-package com.example.hotelorderwithdi.viewModel
+package com.example.hotelorderwithdi.viewModel.mainActivity
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

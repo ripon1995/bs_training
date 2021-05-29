@@ -12,11 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HotelOrderWithDI">
-        <activity android:name=".viewModel.SeekBarActivityWithCallBack"></activity>
-        <activity android:name=".ui.activity.SeekBarTestActivityWithRXJava" />
-        <activity android:name=".ui.activity.SeekBarActivityWithLiveData" />
-        <activity android:name=".ui.activity.MainActivity2" />
-        <activity android:name=".ui.activity.MainActivity">
+        <activity android:name=".ui.activity.seekBarWithCallBack.SeekBarActivityWithCallBack"></activity>
+        <activity android:name=".ui.activity.seekBarWithRxJava.SeekBarTestActivityWithRXJava" />
+        <activity android:name=".ui.activity.seekBarWithLiveData.SeekBarActivityWithLiveData" />
+        <activity android:name=".ui.activity.mainActivity2.MainActivity2" />
+        <activity android:name=".ui.activity.mainActivity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

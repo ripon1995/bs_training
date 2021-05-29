@@ -1,13 +1,12 @@
-package com.example.hotelorderwithdi.di
+package com.example.hotelorderwithdi.di.mainActivity
 
 import androidx.lifecycle.ViewModel
-import com.example.hotelorderwithdi.viewModel.MainActivityViewModel
+import com.example.hotelorderwithdi.viewModel.mainActivity.MainActivityViewModel
 import dagger.Binds
 import dagger.Module
-import dagger.multibindings.IntoMap
 
 @Module
-abstract class MyViewModelModule {
+abstract class MainActivityViewModelModule {
 
     @Binds
     abstract fun bindMyViewModel(mainActivityViewModel: MainActivityViewModel): ViewModel

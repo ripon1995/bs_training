@@ -1,13 +1,14 @@
-package com.example.hotelorderwithdi.viewModel
+package com.example.hotelorderwithdi.ui.activity.seekBarWithCallBack
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.SeekBar
 import androidx.lifecycle.ViewModelProvider
 import com.example.hotelorderwithdi.R
-import com.example.hotelorderwithdi.ui.SeekBarListener
+import com.example.hotelorderwithdi.ui.activity.seekBarWithLiveData.SeekBarListener
+import com.example.hotelorderwithdi.viewModel.seekBarWithCallBack.SeekBarActivityWithCallBackViewModel
+import dagger.android.support.DaggerAppCompatActivity
 
-class SeekBarActivityWithCallBack : AppCompatActivity(),SeekBarListener {
+class SeekBarActivityWithCallBack : DaggerAppCompatActivity(), SeekBarListener {
 
     lateinit var seekBar1: SeekBar
     lateinit var seekBar2: SeekBar
@@ -21,7 +22,8 @@ class SeekBarActivityWithCallBack : AppCompatActivity(),SeekBarListener {
 
         seekBar1 = findViewById(R.id.seekbarFirst)
         seekBar2 = findViewById(R.id.seekbarSecond)
-        seekBarActivityWithCallBackViewModel = ViewModelProvider(this).get(SeekBarActivityWithCallBackViewModel::class.java)
+        seekBarActivityWithCallBackViewModel = ViewModelProvider(this).get(
+            SeekBarActivityWithCallBackViewModel::class.java)
 
         seekBar1.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {

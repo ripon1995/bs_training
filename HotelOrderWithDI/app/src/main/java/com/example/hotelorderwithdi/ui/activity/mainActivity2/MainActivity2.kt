@@ -1,21 +1,28 @@
-package com.example.hotelorderwithdi.ui.activity
+package com.example.hotelorderwithdi.ui.activity.mainActivity2
 
 import android.os.Bundle
 import android.widget.SeekBar
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import com.example.hotelorderwithdi.R
-import com.example.hotelorderwithdi.ui.SeekBarListener
-import com.example.hotelorderwithdi.viewModel.MainActivity2ViewModel
-import com.example.hotelorderwithdi.viewModel.MainActivity2ViewModelFactory
 
-class MainActivity2 : AppCompatActivity(),SeekBarListener {
+import com.example.hotelorderwithdi.viewModel.mainActivity2.MainActivity2ViewModel
+import com.example.hotelorderwithdi.viewModel.mainActivity2.MainActivity2ViewModelFactory
+import dagger.android.support.DaggerAppCompatActivity
+import javax.inject.Inject
+
+class MainActivity2 : DaggerAppCompatActivity(), MainActivity2Listener {
 
     lateinit var mainActivity2ViewModel: MainActivity2ViewModel
+
+    @Inject
     lateinit var mainActivity2ViewModelFactory: MainActivity2ViewModelFactory
 
     lateinit var seekBar1: SeekBar
     lateinit var seekBar2: SeekBar
+    lateinit var textView: TextView
+    lateinit var textView2: TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,14 +30,10 @@ class MainActivity2 : AppCompatActivity(),SeekBarListener {
 
         seekBar1 = findViewById(R.id.seekbarFirst)
         seekBar2 = findViewById(R.id.seekbarSecond)
-
-
-
-        mainActivity2ViewModelFactory = MainActivity2ViewModelFactory()
-        mainActivity2ViewModel = ViewModelProvider(
-            this,
-            mainActivity2ViewModelFactory
-        ).get(MainActivity2ViewModel::class.java)
+        textView = findViewById(R.id.tvFirstProgress)
+textView2 = findViewById(R.id.tvSecondProgress)
+        mainActivity2ViewModel =
+            ViewModelProvider(this, mainActivity2ViewModelFactory).get(MainActivity2ViewModel::class.java)
 
 //        secondActivityViewModel.seekBarLiveData.observe(this@MainActivity2) {
 //            seekBar2.setProgress(it)
@@ -57,7 +60,12 @@ class MainActivity2 : AppCompatActivity(),SeekBarListener {
         })
     }
 
-    override fun listener(value: Int) {
+    override fun progress(value: Int) {
         seekBar2.setProgress(value)
+        textView2.text = value.toString()
+    }
+
+    override fun stringValue(value: String) {
+        textView.setText(value)
     }
 }

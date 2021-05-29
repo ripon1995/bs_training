@@ -4,36 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.MainActivity">
+    tools:context=".ui.activity.mainActivity.MainActivity">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnNextWithLiveData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Next"
         android:backgroundTint="@color/purple_200"
+        android:text="Next"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnNextWithRxJava"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Next"
         android:backgroundTint="@color/purple_200"
-        app:layout_constraintStart_toEndOf="@id/btnNextWithLiveData"
+        android:text="Next"
         app:layout_constraintEnd_toStartOf="@id/btnNextWithCallBack"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintStart_toEndOf="@id/btnNextWithLiveData"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnNextWithCallBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Next"
         android:backgroundTint="@color/purple_200"
+        android:text="Next"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnMainActivity2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/purple_200"
+        android:text="MainActivity2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnNextWithRxJava" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/orderRecyclerView"
@@ -41,7 +51,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnNextWithLiveData" />
+        app:layout_constraintTop_toBottomOf="@id/btnMainActivity2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
