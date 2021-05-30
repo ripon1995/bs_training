@@ -1,12 +1,10 @@
 package com.example.hotelorderwithdi.ui.activity.seekBarWithRxJava
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.SeekBar
 import androidx.lifecycle.ViewModelProvider
 import com.example.hotelorderwithdi.R
 import com.example.hotelorderwithdi.viewModel.seekBarWithRxJava.SeekBarTestActivityWithRXjavaViewModel
-import com.example.hotelorderwithdi.viewModel.seekBarWithRxJava.SeekBarWithRxJavaViewModelFactory
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
@@ -16,9 +14,9 @@ class SeekBarTestActivityWithRXJava : DaggerAppCompatActivity() {
     lateinit var seekBar2: SeekBar
 
     @Inject
-    lateinit var seekBarWithRxJavaViewModelFactory: SeekBarWithRxJavaViewModelFactory
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
-     lateinit var seekBarTestActivityWithRXjavaViewModel: SeekBarTestActivityWithRXjavaViewModel
+    lateinit var seekBarTestActivityWithRXjavaViewModel: SeekBarTestActivityWithRXjavaViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,13 +27,14 @@ class SeekBarTestActivityWithRXJava : DaggerAppCompatActivity() {
         seekBar2 = findViewById(R.id.seekbarSecond)
 
 
-        seekBarTestActivityWithRXjavaViewModel = ViewModelProvider(this,seekBarWithRxJavaViewModelFactory).get(
-            SeekBarTestActivityWithRXjavaViewModel::class.java)
+        seekBarTestActivityWithRXjavaViewModel = ViewModelProvider(this, viewModelFactory).get(
+            SeekBarTestActivityWithRXjavaViewModel::class.java
+        )
 
-        seekBar1.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+        seekBar1.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 seekBarTestActivityWithRXjavaViewModel.fetchSeekbarValue(progress)
-                seekBarTestActivityWithRXjavaViewModel.seekbarLiveData.observe(this@SeekBarTestActivityWithRXJava){
+                seekBarTestActivityWithRXjavaViewModel.seekbarLiveData.observe(this@SeekBarTestActivityWithRXJava) {
                     seekBar2.setProgress(it)
                 }
             }

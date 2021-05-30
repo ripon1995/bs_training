@@ -1,14 +1,11 @@
 package com.example.hotelorderwithdi.ui.activity.seekBarWithLiveData
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import com.example.hotelorderwithdi.R
-import com.example.hotelorderwithdi.di.seekBarWithLiveData.SeekBarWithLiveDataActivityModule_BindSeekBarActivityWithLiveData
 import com.example.hotelorderwithdi.viewModel.seekBarWithLiveData.SeekBarActivityWithLiveDataViewModel
-import com.example.hotelorderwithdi.viewModel.seekBarWithLiveData.SeekBarActivityWithLiveDataViewModelFactory
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
@@ -20,10 +17,11 @@ class SeekBarActivityWithLiveData : DaggerAppCompatActivity() {
     lateinit var textView1:TextView
     lateinit var textView2:TextView
 
-    @Inject
-    lateinit var seekbarActivityWithLiveDataViewmodelFactory: SeekBarActivityWithLiveDataViewModelFactory
 
     lateinit var seekBarActivityWithLiveDataViewModel: SeekBarActivityWithLiveDataViewModel
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +34,7 @@ class SeekBarActivityWithLiveData : DaggerAppCompatActivity() {
         textView2 = findViewById(R.id.tvSecondProgress)
 
 
-        seekBarActivityWithLiveDataViewModel = ViewModelProvider(this,seekbarActivityWithLiveDataViewmodelFactory).get(
+        seekBarActivityWithLiveDataViewModel = ViewModelProvider(this,viewModelFactory).get(
             SeekBarActivityWithLiveDataViewModel::class.java)
 
         seekBar1.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{

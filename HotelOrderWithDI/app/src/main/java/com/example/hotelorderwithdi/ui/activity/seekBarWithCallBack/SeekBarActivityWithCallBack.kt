@@ -5,7 +5,6 @@ import android.widget.SeekBar
 import androidx.lifecycle.ViewModelProvider
 import com.example.hotelorderwithdi.R
 import com.example.hotelorderwithdi.viewModel.seekBarWithCallBack.SeekBarActivityWithCallBackViewModel
-import com.example.hotelorderwithdi.viewModel.seekBarWithCallBack.SeekBarActivityWithCallBackViewModelFactory
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
@@ -16,8 +15,11 @@ class SeekBarActivityWithCallBack : DaggerAppCompatActivity(), SeekBarListener {
 
     private lateinit var seekBarActivityWithCallBackViewModel: SeekBarActivityWithCallBackViewModel
 
+//    @Inject
+//    lateinit var seekbaractivitywithlivedataviewmodelFactory: SeekBarActivityWithCallBackViewModelFactory
+
     @Inject
-    lateinit var seekbaractivitywithlivedataviewmodelFactory: SeekBarActivityWithCallBackViewModelFactory
+    lateinit var viewModelFactory:ViewModelProvider.Factory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +28,7 @@ class SeekBarActivityWithCallBack : DaggerAppCompatActivity(), SeekBarListener {
         seekBar1 = findViewById(R.id.seekbarFirst)
         seekBar2 = findViewById(R.id.seekbarSecond)
         seekBarActivityWithCallBackViewModel =
-            ViewModelProvider(this, seekbaractivitywithlivedataviewmodelFactory).get(
+            ViewModelProvider(this, viewModelFactory).get(
                 SeekBarActivityWithCallBackViewModel::class.java
             )
 

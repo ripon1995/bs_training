@@ -14,7 +14,6 @@ import com.example.hotelorderwithdi.ui.activity.seekBarWithLiveData.SeekBarActiv
 import com.example.hotelorderwithdi.ui.activity.seekBarWithRxJava.SeekBarTestActivityWithRXJava
 import com.example.hotelorderwithdi.ui.adapter.OrderAdapter
 import com.example.hotelorderwithdi.viewModel.mainActivity.MainActivityViewModel
-import com.example.hotelorderwithdi.viewModel.mainActivity.SampleViewModelFactory
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
@@ -24,7 +23,7 @@ class MainActivity : DaggerAppCompatActivity() {
     lateinit var mainActivityViewModel: MainActivityViewModel
 
     @Inject
-    lateinit var sampleViewModelFactory: SampleViewModelFactory
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
 
     lateinit var button: Button
@@ -61,7 +60,7 @@ class MainActivity : DaggerAppCompatActivity() {
         }
 
         mainActivityViewModel =
-            ViewModelProvider(this, sampleViewModelFactory).get(MainActivityViewModel::class.java)
+            ViewModelProvider(this, viewModelFactory).get(MainActivityViewModel::class.java)
         mainActivityViewModel.fetchOrderDetails()
         mainActivityViewModel.orderListLiveData.observe(this) {
             showOrderList(it)

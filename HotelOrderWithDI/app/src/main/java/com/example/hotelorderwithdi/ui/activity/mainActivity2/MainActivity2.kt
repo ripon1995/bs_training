@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.hotelorderwithdi.R
 
 import com.example.hotelorderwithdi.viewModel.mainActivity2.MainActivity2ViewModel
-import com.example.hotelorderwithdi.viewModel.mainActivity2.MainActivity2ViewModelFactory
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
@@ -16,7 +15,7 @@ class MainActivity2 : DaggerAppCompatActivity(), MainActivity2Listener {
     lateinit var mainActivity2ViewModel: MainActivity2ViewModel
 
     @Inject
-    lateinit var mainActivity2ViewModelFactory: MainActivity2ViewModelFactory
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     lateinit var seekBar1: SeekBar
     lateinit var seekBar2: SeekBar
@@ -31,9 +30,9 @@ class MainActivity2 : DaggerAppCompatActivity(), MainActivity2Listener {
         seekBar1 = findViewById(R.id.seekbarFirst)
         seekBar2 = findViewById(R.id.seekbarSecond)
         textView = findViewById(R.id.tvFirstProgress)
-textView2 = findViewById(R.id.tvSecondProgress)
+        textView2 = findViewById(R.id.tvSecondProgress)
         mainActivity2ViewModel =
-            ViewModelProvider(this, mainActivity2ViewModelFactory).get(MainActivity2ViewModel::class.java)
+            ViewModelProvider(this, viewModelFactory).get(MainActivity2ViewModel::class.java)
 
 //        secondActivityViewModel.seekBarLiveData.observe(this@MainActivity2) {
 //            seekBar2.setProgress(it)
@@ -46,7 +45,7 @@ textView2 = findViewById(R.id.tvSecondProgress)
         seekBar1.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 //secondActivityViewModel.fetchSeekbarValue(progress)
-                mainActivity2ViewModel.fetchSeekBarValue2(progress,this@MainActivity2)
+                mainActivity2ViewModel.fetchSeekBarValue2(progress, this@MainActivity2)
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
