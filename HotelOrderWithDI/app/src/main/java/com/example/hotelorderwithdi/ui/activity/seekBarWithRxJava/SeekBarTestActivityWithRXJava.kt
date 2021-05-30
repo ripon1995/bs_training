@@ -6,6 +6,7 @@ import android.widget.SeekBar
 import androidx.lifecycle.ViewModelProvider
 import com.example.hotelorderwithdi.R
 import com.example.hotelorderwithdi.viewModel.seekBarWithRxJava.SeekBarTestActivityWithRXjavaViewModel
+import com.example.hotelorderwithdi.viewModel.seekBarWithRxJava.SeekBarWithRxJavaViewModelFactory
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
@@ -15,6 +16,8 @@ class SeekBarTestActivityWithRXJava : DaggerAppCompatActivity() {
     lateinit var seekBar2: SeekBar
 
     @Inject
+    lateinit var seekBarWithRxJavaViewModelFactory: SeekBarWithRxJavaViewModelFactory
+
      lateinit var seekBarTestActivityWithRXjavaViewModel: SeekBarTestActivityWithRXjavaViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +29,7 @@ class SeekBarTestActivityWithRXJava : DaggerAppCompatActivity() {
         seekBar2 = findViewById(R.id.seekbarSecond)
 
 
-        seekBarTestActivityWithRXjavaViewModel = ViewModelProvider(this).get(
+        seekBarTestActivityWithRXjavaViewModel = ViewModelProvider(this,seekBarWithRxJavaViewModelFactory).get(
             SeekBarTestActivityWithRXjavaViewModel::class.java)
 
         seekBar1.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{

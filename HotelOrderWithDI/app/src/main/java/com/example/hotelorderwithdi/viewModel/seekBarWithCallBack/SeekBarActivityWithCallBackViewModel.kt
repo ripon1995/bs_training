@@ -1,7 +1,7 @@
 package com.example.hotelorderwithdi.viewModel.seekBarWithCallBack
 
 import androidx.lifecycle.ViewModel
-import com.example.hotelorderwithdi.ui.activity.seekBarWithLiveData.SeekBarListener
+import com.example.hotelorderwithdi.ui.activity.seekBarWithCallBack.SeekBarListener
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable

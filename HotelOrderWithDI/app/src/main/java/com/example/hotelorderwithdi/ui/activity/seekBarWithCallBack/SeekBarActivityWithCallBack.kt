@@ -4,9 +4,10 @@ import android.os.Bundle
 import android.widget.SeekBar
 import androidx.lifecycle.ViewModelProvider
 import com.example.hotelorderwithdi.R
-import com.example.hotelorderwithdi.ui.activity.seekBarWithLiveData.SeekBarListener
 import com.example.hotelorderwithdi.viewModel.seekBarWithCallBack.SeekBarActivityWithCallBackViewModel
+import com.example.hotelorderwithdi.viewModel.seekBarWithCallBack.SeekBarActivityWithCallBackViewModelFactory
 import dagger.android.support.DaggerAppCompatActivity
+import javax.inject.Inject
 
 class SeekBarActivityWithCallBack : DaggerAppCompatActivity(), SeekBarListener {
 
@@ -15,6 +16,8 @@ class SeekBarActivityWithCallBack : DaggerAppCompatActivity(), SeekBarListener {
 
     private lateinit var seekBarActivityWithCallBackViewModel: SeekBarActivityWithCallBackViewModel
 
+    @Inject
+    lateinit var seekbaractivitywithlivedataviewmodelFactory: SeekBarActivityWithCallBackViewModelFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,12 +25,17 @@ class SeekBarActivityWithCallBack : DaggerAppCompatActivity(), SeekBarListener {
 
         seekBar1 = findViewById(R.id.seekbarFirst)
         seekBar2 = findViewById(R.id.seekbarSecond)
-        seekBarActivityWithCallBackViewModel = ViewModelProvider(this).get(
-            SeekBarActivityWithCallBackViewModel::class.java)
+        seekBarActivityWithCallBackViewModel =
+            ViewModelProvider(this, seekbaractivitywithlivedataviewmodelFactory).get(
+                SeekBarActivityWithCallBackViewModel::class.java
+            )
 
-        seekBar1.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+        seekBar1.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                seekBarActivityWithCallBackViewModel.fetchSeekBarData(progress,this@SeekBarActivityWithCallBack)
+                seekBarActivityWithCallBackViewModel.fetchSeekBarData(
+                    progress,
+                    this@SeekBarActivityWithCallBack
+                )
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
