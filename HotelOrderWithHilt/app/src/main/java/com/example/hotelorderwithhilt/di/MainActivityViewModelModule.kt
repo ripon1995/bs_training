@@ -1,8 +1,7 @@
-package com.example.hotelorderwithdi.di.mainActivity
+package com.example.hotelorderwithhilt.di
 
 import androidx.lifecycle.ViewModel
-import com.example.hotelorderwithdi.di.ViewModelKey
-import com.example.hotelorderwithdi.viewModel.mainActivity.MainActivityViewModel
+import com.example.hotelorderwithhilt.viewModel.MainActivityViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

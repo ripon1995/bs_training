@@ -1,7 +1,7 @@
-package com.example.hotelorderwithdi.di.mainActivity
+package com.example.hotelorderwithhilt.di
 
-import com.example.hotelorderwithdi.dataSource.remoteDataSource.RestApiDataSource
-import com.example.hotelorderwithdi.dataSource.remoteDataSource.RestApiDataSourceImplementation
+import com.example.hotelorderwithhilt.dataSource.remoteDataSource.RestApiDataSource
+import com.example.hotelorderwithhilt.dataSource.remoteDataSource.RestApiDataSourceImplementation
 import dagger.Binds
 import dagger.Module
 
@@ -9,6 +9,6 @@ import dagger.Module
 abstract class RestApiDataSourceModule {
 
     @Binds
-    abstract fun provideData(restApiDataSourceImplementation: RestApiDataSourceImplementation):RestApiDataSource
+    abstract fun provideData(restApiDataSourceImplementation: RestApiDataSourceImplementation): RestApiDataSource
 
 }

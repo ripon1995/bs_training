@@ -1,12 +1,12 @@
-package com.example.hotelorderwithdi.ui.adapter
+package com.example.hotelorderwithhilt.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.hotelorderwithdi.R
-import com.example.hotelorder.dataSource.model.OrderItem
+import com.example.hotelorderwithhilt.R
+import com.example.hotelorderwithhilt.dataSource.model.OrderItem
 import java.text.SimpleDateFormat
 import java.util.*
 

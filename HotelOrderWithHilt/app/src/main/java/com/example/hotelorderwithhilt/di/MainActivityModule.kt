@@ -1,6 +1,6 @@
-package com.example.hotelorderwithdi.di.mainActivity
+package com.example.hotelorderwithhilt.di
 
-import com.example.hotelorderwithdi.ui.activity.mainActivity.MainActivity
+import com.example.hotelorderwithhilt.ui.activity.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

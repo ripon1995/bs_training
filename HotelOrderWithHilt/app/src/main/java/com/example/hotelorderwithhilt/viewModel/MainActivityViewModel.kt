@@ -1,9 +1,9 @@
-package com.example.hotelorderwithdi.viewModel.mainActivity
+package com.example.hotelorderwithhilt.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.hotelorder.dataSource.model.Order
-import com.example.hotelorderwithdi.dataSource.remoteDataSource.RestApiDataSourceImplementation
+import com.example.hotelorderwithhilt.dataSource.model.Order
+import com.example.hotelorderwithhilt.dataSource.remoteDataSource.RestApiDataSourceImplementation
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers

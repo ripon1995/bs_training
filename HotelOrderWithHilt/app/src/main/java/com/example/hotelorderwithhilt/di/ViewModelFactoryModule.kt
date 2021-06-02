@@ -1,7 +1,7 @@
-package com.example.hotelorderwithdi.di
+package com.example.hotelorderwithhilt.di
 
 import androidx.lifecycle.ViewModelProvider
-import com.example.hotelorderwithdi.viewModel.AppViewModelFactory
+import com.example.hotelorderwithhilt.viewModel.AppViewModelFactory
 import dagger.Binds
 import dagger.Module
 
@@ -9,6 +9,6 @@ import dagger.Module
 abstract class ViewModelFactoryModule {
 
     @Binds
-    abstract  fun bindViewModelFactory(appViewModelFactory: AppViewModelFactory):ViewModelProvider.Factory
+    abstract fun bindViewModelFactory(appViewModelFactory: AppViewModelFactory): ViewModelProvider.Factory
 
 }

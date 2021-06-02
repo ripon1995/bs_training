@@ -1,6 +1,7 @@
-package com.example.hotelorderwithdi
+package com.example.hotelorderwithhilt
 
-import com.example.hotelorderwithdi.di.DaggerMyComponent
+
+import com.example.hotelorderwithhilt.di.DaggerMyComponent
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 

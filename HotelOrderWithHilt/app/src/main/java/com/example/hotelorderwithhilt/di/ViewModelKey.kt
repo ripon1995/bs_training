@@ -1,4 +1,4 @@
-package com.example.hotelorderwithdi.di
+package com.example.hotelorderwithhilt.di
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey
