@@ -1,4 +1,4 @@
-package com.example.hotelorder.network
+package com.example.hotelorderwithhilt.network
 
 import com.example.hotelorderwithhilt.dataSource.model.Order
 import io.reactivex.Observable

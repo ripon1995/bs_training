@@ -1,30 +1,28 @@
 package com.example.hotelorderwithhilt.ui.activity
 
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hotelorderwithhilt.R
 import com.example.hotelorderwithhilt.dataSource.model.OrderItem
 import com.example.hotelorderwithhilt.ui.adapter.OrderAdapter
 import com.example.hotelorderwithhilt.viewModel.MainActivityViewModel
-import dagger.android.support.DaggerAppCompatActivity
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
-class MainActivity : DaggerAppCompatActivity() {
+@AndroidEntryPoint
+class MainActivity : AppCompatActivity() {
 
-    lateinit var mainActivityViewModel: MainActivityViewModel
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+     private val mainActivityViewModel:MainActivityViewModel by viewModels()
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override
+
+    fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        mainActivityViewModel =
-            ViewModelProvider(this, viewModelFactory).get(MainActivityViewModel::class.java)
         mainActivityViewModel.fetchOrderDetails()
         mainActivityViewModel.orderListLiveData.observe(this) {
             showOrderList(it)
