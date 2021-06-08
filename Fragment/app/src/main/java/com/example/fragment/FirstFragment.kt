@@ -4,13 +4,31 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import com.example.fragment.databinding.FragmentFirstBinding
 
-class FirstFragment: Fragment(){
+class FirstFragment : BaseFragment<FragmentFirstBinding>() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentFirstBinding
+        get() = FragmentFirstBinding::inflate
 
-        val view=inflater?.inflate(R.layout.fragment_first,container,false)
-        return view
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+        println("First Fragment: onCreateView")
+        return super.onCreateView(inflater, container, savedInstanceState)
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        println("First Fragment: onViewCreated")
+
+        binding.btn.setOnClickListener(View.OnClickListener {
+            binding.first.text = "FIRST TEXT"
+            binding.second.text = "SECOND TEXT"
+            binding.third.text = "THIRD TEXT"
+        })
+    }
+
 }
