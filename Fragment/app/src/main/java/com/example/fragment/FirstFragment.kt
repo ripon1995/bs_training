@@ -11,15 +11,7 @@ class FirstFragment : BaseFragment<FragmentFirstBinding>() {
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentFirstBinding
         get() = FragmentFirstBinding::inflate
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
 
-        println("First Fragment: onCreateView")
-        return super.onCreateView(inflater, container, savedInstanceState)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         println("First Fragment: onViewCreated")

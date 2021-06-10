@@ -19,6 +19,7 @@ abstract class BaseFragment<Binding : ViewBinding> : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        println("BaseFragment: onCreateView")
         binding = bindingInflater.invoke(inflater, container, false)
         return binding.root
     }
