@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "922588703563",
+    "project_id": "oshudhwala-a376a",
+    "storage_bucket": "oshudhwala-a376a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:922588703563:android:1ba17561738476698696ce",
+        "android_client_info": {
+          "package_name": "com.example.oshudhwala"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "922588703563-relh734qm3c47155edmdmt5pnil5k2bi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDh8jP61G-lpK6R3tQepWFVNiyi32O5NPg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "922588703563-relh734qm3c47155edmdmt5pnil5k2bi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

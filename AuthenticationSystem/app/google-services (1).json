@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "133614558658",
+    "firebase_url": "https://authenticationsystem-fa7de-default-rtdb.firebaseio.com",
+    "project_id": "authenticationsystem-fa7de",
+    "storage_bucket": "authenticationsystem-fa7de.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:133614558658:android:7cfb312dce7da99cd2ca5b",
+        "android_client_info": {
+          "package_name": "com.example.authenticationsystem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "133614558658-ueu9opuu114p3dtikkfbsnl37f7nc365.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjACBrf7loETtla12QzPW4uQGgzws9hWo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "133614558658-ueu9opuu114p3dtikkfbsnl37f7nc365.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
