@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
 
 class Register : AppCompatActivity() {
@@ -29,6 +30,16 @@ class Register : AppCompatActivity() {
             goForEmailRegistration()
         })
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val currentUser = mAuth.currentUser
+        if(currentUser!= null){
+            Toast.makeText(this, "Already signed in", Toast.LENGTH_SHORT).show()
+//            val intent = Intent(this,Login::class.java)
+//            startActivity(intent)
+        }
     }
 
     private fun inIt() {
@@ -68,10 +79,10 @@ class Register : AppCompatActivity() {
         }
 
         mAuth.createUserWithEmailAndPassword(email, pass)
-            .addOnCompleteListener {
+            .addOnCompleteListener(this) {
 
                 if (it.isSuccessful) {
-                    val user = User(fullName, email)
+                    val user = User(fullName, email,pass)
                     FirebaseDatabase.getInstance().getReference("Users")
                         .child(FirebaseAuth.getInstance().currentUser?.uid!!)
                         .setValue(user)
@@ -92,6 +103,7 @@ class Register : AppCompatActivity() {
                     }
                 }
             }
+
     }
     private fun goToLogInActivity(){
         val intent = Intent(this,Login::class.java)
