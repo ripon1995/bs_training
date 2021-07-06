@@ -9,7 +9,6 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
 
 class Register : AppCompatActivity() {
@@ -26,19 +25,17 @@ class Register : AppCompatActivity() {
         inIt()
         mAuth = FirebaseAuth.getInstance()
 
-        register.setOnClickListener(View.OnClickListener {
+        register.setOnClickListener{
             goForEmailRegistration()
-        })
+        }
 
     }
 
     override fun onStart() {
         super.onStart()
         val currentUser = mAuth.currentUser
-        if(currentUser!= null){
+        if (currentUser != null) {
             Toast.makeText(this, "Already signed in", Toast.LENGTH_SHORT).show()
-//            val intent = Intent(this,Login::class.java)
-//            startActivity(intent)
         }
     }
 
@@ -77,12 +74,17 @@ class Register : AppCompatActivity() {
             etPass.requestFocus()
             return
         }
+        if (rePass != pass) {
+            etRePass.error = "Password did not match"
+            etPass.requestFocus()
+            return
+        }
 
         mAuth.createUserWithEmailAndPassword(email, pass)
             .addOnCompleteListener(this) {
 
                 if (it.isSuccessful) {
-                    val user = User(fullName, email,pass)
+                    val user = User(fullName, email)
                     FirebaseDatabase.getInstance().getReference("Users")
                         .child(FirebaseAuth.getInstance().currentUser?.uid!!)
                         .setValue(user)
@@ -97,16 +99,17 @@ class Register : AppCompatActivity() {
 
                 } else {
                     println(it.exception.toString())
-                    if(it.exception.toString().contains("The email address is already in use")){
-                        etEmail.error="Already in use"
+                    if (it.exception.toString().contains("The email address is already in use")) {
+                        etEmail.error = "Already in use"
                         etEmail.requestFocus()
                     }
                 }
             }
 
     }
-    private fun goToLogInActivity(){
-        val intent = Intent(this,Login::class.java)
+
+    private fun goToLogInActivity() {
+        val intent = Intent(this, Login::class.java)
         startActivity(intent)
     }
 }
