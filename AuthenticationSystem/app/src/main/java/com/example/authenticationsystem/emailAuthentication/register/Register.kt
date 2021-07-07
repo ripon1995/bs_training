@@ -45,13 +45,6 @@ class Register : AppCompatActivity() {
 
     }
 
-//    override fun onStart() {
-//        super.onStart()
-//        val currentUser = mAuth.currentUser
-//        if (currentUser != null) {
-//            Toast.makeText(this, "Already signed in", Toast.LENGTH_SHORT).show()
-//        }
-//    }
 
     private fun inIt() {
         etFullName = findViewById(R.id.etName)

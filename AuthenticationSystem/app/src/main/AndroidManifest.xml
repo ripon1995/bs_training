@@ -12,11 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AuthenticationSystem">
-        <activity android:name=".DashBoard"></activity>
+        <activity android:name=".phoneNumberAuthentication.resetPassword.ResetPassPhone"></activity>
+        <activity android:name=".phoneNumberAuthentication.register.RegisterPhone" />
+        <activity android:name=".phoneNumberAuthentication.login.LoginPhone" />
+        <activity android:name=".phoneNumberAuthentication.login.Login" />
+        <activity android:name=".DashBoard" />
         <activity android:name=".emailAuthentication.resetPass.ResetPassword" />
         <activity android:name=".emailAuthentication.register.Register" />
         <activity android:name=".emailAuthentication.login.Login" />
-        <activity android:name="MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
