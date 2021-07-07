@@ -1,14 +1,17 @@
-package com.example.authenticationsystem
+package com.example.authenticationsystem.emailAuthentication.login
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.auth.FirebaseAuth
+import androidx.lifecycle.ViewModelProvider
+import com.example.authenticationsystem.DashBoard
+import com.example.authenticationsystem.R
+import com.example.authenticationsystem.emailAuthentication.register.Register
+import com.example.authenticationsystem.emailAuthentication.resetPass.ResetPassword
 
 class Login : AppCompatActivity() {
 
@@ -17,7 +20,7 @@ class Login : AppCompatActivity() {
     private lateinit var buttonForgotPassword: Button
     private lateinit var etMail: EditText
     private lateinit var etPass: EditText
-    private lateinit var mAuth: FirebaseAuth
+    private lateinit var viewModel: LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,17 +28,35 @@ class Login : AppCompatActivity() {
 
         inIt()
 
-        buttonLogin.setOnClickListener{
+        buttonLogin.setOnClickListener {
+            Log.d("Login", "onCreate: methodCalling")
             goForLogin()
         }
 
-        buttonRegister.setOnClickListener{
+        buttonRegister.setOnClickListener {
             goToRegistrationActivity()
         }
 
         buttonForgotPassword.setOnClickListener {
             goForResetPassword()
         }
+
+
+        viewModel.exceptionLiveData.observe(this, {
+            when (it) {
+                "Successful" -> {
+                    goToDashBoard()
+                }
+                "Wrong pass" -> {
+                    etPass.error = "Wrong password"
+                    etPass.requestFocus()
+                }
+                "Invalid user" -> {
+                    etMail.error = "Wrong mail"
+                    etMail.requestFocus()
+                }
+            }
+        })
     }
 
     private fun goForLogin() {
@@ -53,29 +74,14 @@ class Login : AppCompatActivity() {
             return
         }
 
-        mAuth.signInWithEmailAndPassword(mail, pass)
-            .addOnCompleteListener(this) {
-                if (it.isSuccessful) {
-                    goToMainActivity()
-                } else {
-                    Log.w("Login", "signInWithEmail:failure", it.exception)
-                    if (it.exception.toString().contains("The password is invalid")) {
-                        etPass.error = "Wrong passord"
-                        etPass.requestFocus()
-                    }
-                    if (it.exception.toString()
-                            .contains("There is no user record corresponding to this identifier")
-                    ) {
-                        etMail.error = "Wrong mail"
-                        etMail.requestFocus()
-                    }
-                }
-            }
-
+        Log.d("Login", "goForLogin: callingViewModel:::::Start")
+        viewModel.loginUser(mail, pass)
+        Log.d("Login", "goForLogin: CallingViewModel:::::End")
     }
 
-    private fun goToMainActivity() {
-        val intent = Intent(this, MainActivity::class.java)
+
+    private fun goToDashBoard() {
+        val intent = Intent(this, DashBoard::class.java)
         startActivity(intent)
     }
 
@@ -95,6 +101,7 @@ class Login : AppCompatActivity() {
         buttonForgotPassword = findViewById(R.id.btnForgotPass)
         etMail = findViewById(R.id.etMail)
         etPass = findViewById(R.id.etPass)
-        mAuth = FirebaseAuth.getInstance()
+
+        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
     }
 }

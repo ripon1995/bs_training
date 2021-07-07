@@ -1,43 +1,57 @@
-package com.example.authenticationsystem
+package com.example.authenticationsystem.emailAuthentication.register
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.example.authenticationsystem.R
+import com.example.authenticationsystem.emailAuthentication.login.Login
 
 class Register : AppCompatActivity() {
-    private lateinit var mAuth: FirebaseAuth
     private lateinit var etFullName: EditText
     private lateinit var etEmail: EditText
     private lateinit var etPass: EditText
     private lateinit var etRePass: EditText
     private lateinit var register: Button
+    private lateinit var viewModel: RegisterViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
         inIt()
-        mAuth = FirebaseAuth.getInstance()
 
-        register.setOnClickListener{
+
+        register.setOnClickListener {
             goForEmailRegistration()
         }
 
+        viewModel.registerSuccessLiveData.observe(this, Observer {
+            when (it) {
+                "Successful" -> {
+                    Toast.makeText(this, "Successful", Toast.LENGTH_LONG).show()
+                    goToLogInActivity()
+                }
+                "Already in use" -> {
+                    etEmail.error = "Already in use"
+                    etEmail.requestFocus()
+                }
+            }
+        })
+
     }
 
-    override fun onStart() {
-        super.onStart()
-        val currentUser = mAuth.currentUser
-        if (currentUser != null) {
-            Toast.makeText(this, "Already signed in", Toast.LENGTH_SHORT).show()
-        }
-    }
+//    override fun onStart() {
+//        super.onStart()
+//        val currentUser = mAuth.currentUser
+//        if (currentUser != null) {
+//            Toast.makeText(this, "Already signed in", Toast.LENGTH_SHORT).show()
+//        }
+//    }
 
     private fun inIt() {
         etFullName = findViewById(R.id.etName)
@@ -45,6 +59,7 @@ class Register : AppCompatActivity() {
         etPass = findViewById(R.id.etPass)
         etRePass = findViewById(R.id.etRePass)
         register = findViewById(R.id.btnRegister)
+        viewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
     }
 
     private fun goForEmailRegistration() {
@@ -79,32 +94,7 @@ class Register : AppCompatActivity() {
             etPass.requestFocus()
             return
         }
-
-        mAuth.createUserWithEmailAndPassword(email, pass)
-            .addOnCompleteListener(this) {
-
-                if (it.isSuccessful) {
-                    val user = User(fullName, email)
-                    FirebaseDatabase.getInstance().getReference("Users")
-                        .child(FirebaseAuth.getInstance().currentUser?.uid!!)
-                        .setValue(user)
-                        .addOnCompleteListener {
-                            if (it.isSuccessful) {
-                                Toast.makeText(this, "Successful", Toast.LENGTH_LONG).show()
-                                goToLogInActivity()
-                            } else {
-                                Toast.makeText(this, "Not successful", Toast.LENGTH_LONG).show()
-                            }
-                        }
-
-                } else {
-                    println(it.exception.toString())
-                    if (it.exception.toString().contains("The email address is already in use")) {
-                        etEmail.error = "Already in use"
-                        etEmail.requestFocus()
-                    }
-                }
-            }
+        viewModel.registerUser(email, pass, fullName)
 
     }
 

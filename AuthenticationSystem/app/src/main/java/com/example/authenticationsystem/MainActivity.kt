@@ -1,36 +1,36 @@
 package com.example.authenticationsystem
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
-import com.google.firebase.auth.FirebaseAuth
+import androidx.appcompat.app.AppCompatActivity
+import com.example.authenticationsystem.emailAuthentication.login.Login
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var signOutButton:Button
-    private lateinit var mAuth: FirebaseAuth
+    private lateinit var btnEmailAuthentication: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        signOutButton = findViewById(R.id.btnSignOut)
-        mAuth = FirebaseAuth.getInstance()
 
-        signOutButton.setOnClickListener {
-            goForSignOut()
+        inIt()
+
+        btnEmailAuthentication.setOnClickListener {
+            goToLoginActivity()
         }
     }
 
-    private fun goForSignOut(){
-        mAuth.signOut()
-        goForLogInActivity()
+
+    private fun inIt() {
+        btnEmailAuthentication = findViewById(R.id.btnEmailAuthentication)
+
     }
 
-    private fun goForLogInActivity(){
-        val intent = Intent(this,Login::class.java)
+    private fun goToLoginActivity() {
+        val intent = Intent(this, Login::class.java)
         startActivity(intent)
     }
+
 
 }
