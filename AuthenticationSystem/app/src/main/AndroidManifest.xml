@@ -3,24 +3,25 @@
     package="com.example.authenticationsystem">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name="androidx.multidex.MultiDexApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AuthenticationSystem">
-        <activity android:name=".phoneNumberAuthentication.resetPassword.ResetPassPhone"></activity>
+
+        <activity android:name=".phoneNumberAuthentication.resetPassword.ResetPassPhone" />
         <activity android:name=".phoneNumberAuthentication.register.RegisterPhone" />
         <activity android:name=".phoneNumberAuthentication.login.LoginPhone" />
-        <activity android:name=".phoneNumberAuthentication.login.Login" />
         <activity android:name=".DashBoard" />
         <activity android:name=".emailAuthentication.resetPass.ResetPassword" />
         <activity android:name=".emailAuthentication.register.Register" />
         <activity android:name=".emailAuthentication.login.Login" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

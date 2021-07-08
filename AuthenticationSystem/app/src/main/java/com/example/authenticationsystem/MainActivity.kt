@@ -5,10 +5,12 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.authenticationsystem.emailAuthentication.login.Login
+import com.example.authenticationsystem.phoneNumberAuthentication.login.LoginPhone
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var btnEmailAuthentication: Button
+    private lateinit var btnPhoneAuthentication: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,11 +21,16 @@ class MainActivity : AppCompatActivity() {
         btnEmailAuthentication.setOnClickListener {
             goToLoginActivity()
         }
+
+        btnPhoneAuthentication.setOnClickListener {
+            goToLoginPhoneActivity()
+        }
     }
 
 
     private fun inIt() {
         btnEmailAuthentication = findViewById(R.id.btnEmailAuthentication)
+        btnPhoneAuthentication = findViewById(R.id.btnPhoneAuthentication)
 
     }
 
@@ -32,5 +39,8 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-
+    private fun goToLoginPhoneActivity() {
+        val intent = Intent(this, LoginPhone::class.java)
+        startActivity(intent)
+    }
 }

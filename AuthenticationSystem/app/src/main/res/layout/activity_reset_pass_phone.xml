@@ -7,10 +7,10 @@
     tools:context=".phoneNumberAuthentication.resetPassword.ResetPassPhone">
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvLabelForgotPass"
+        android:id="@+id/tvMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Reset Password"
+        android:text="OTP"
         android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -19,12 +19,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etPhone"
+        android:id="@+id/etOtp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:gravity="center"
-        android:hint="enter your phone no"
+        android:hint="ENTER OTP"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -36,9 +36,9 @@
         android:id="@+id/btnReset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Reset"
+        android:text="LOGin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etPhone" />
+        app:layout_constraintTop_toBottomOf="@id/etOtp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

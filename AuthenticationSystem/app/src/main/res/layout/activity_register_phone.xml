@@ -19,11 +19,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etName"
+        android:id="@+id/etPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="enter full name"
+        android:hint="enter your mobile no"
+        android:inputType="phone"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -31,49 +34,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvMessage" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etPhone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="enter your mobile no"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etName" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etPass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="pass"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etPhone" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etRePass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Re pass"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etPass" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Register"
+        android:text="Send Otp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etRePass" />
+        app:layout_constraintTop_toBottomOf="@id/etPhone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
