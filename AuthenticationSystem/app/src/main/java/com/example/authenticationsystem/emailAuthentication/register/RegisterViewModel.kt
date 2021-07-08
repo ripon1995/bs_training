@@ -17,7 +17,7 @@ class RegisterViewModel : ViewModel() {
                 if (it.isSuccessful) {
                     registerSuccessLiveData.postValue("Successful")
                     val user = User(fullName, mail)
-                    FirebaseDatabase.getInstance().getReference("Users")
+                    FirebaseDatabase.getInstance().getReference("AuthenticatedByMail")
                         .child(FirebaseAuth.getInstance().currentUser?.uid!!)
                         .setValue(user)
                 } else {

@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.authenticationsystem.emailAuthentication.login.Login
-import com.example.authenticationsystem.phoneNumberAuthentication.login.LoginPhone
+import com.example.authenticationsystem.phoneNumberAuthentication.login.RegisterPhone
 
 class MainActivity : AppCompatActivity() {
 
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun goToLoginPhoneActivity() {
-        val intent = Intent(this, LoginPhone::class.java)
+        val intent = Intent(this, RegisterPhone::class.java)
         startActivity(intent)
     }
 }

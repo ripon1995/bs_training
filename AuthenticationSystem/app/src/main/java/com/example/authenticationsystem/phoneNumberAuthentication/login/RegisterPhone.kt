@@ -1,4 +1,4 @@
-package com.example.authenticationsystem.phoneNumberAuthentication.register
+package com.example.authenticationsystem.phoneNumberAuthentication.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,9 +8,12 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.authenticationsystem.R
-import com.example.authenticationsystem.phoneNumberAuthentication.resetPassword.ResetPassPhone
+import com.example.authenticationsystem.phoneNumberAuthentication.otp.Otp
 import com.google.firebase.FirebaseException
-import com.google.firebase.auth.*
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.PhoneAuthCredential
+import com.google.firebase.auth.PhoneAuthOptions
+import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.auth.PhoneAuthProvider.ForceResendingToken
 import com.google.firebase.auth.PhoneAuthProvider.OnVerificationStateChangedCallbacks
 import java.util.concurrent.TimeUnit
@@ -24,7 +27,6 @@ class RegisterPhone : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
 
-    private lateinit var code: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,11 +37,16 @@ class RegisterPhone : AppCompatActivity() {
             registerUser()
         }
 
+
     }
 
     private fun registerUser() {
 
         val phoneNumber = etPhone.text.toString().trim()
+        if (etPhone.text.toString().trim().length != 11) {
+            etPhone.error = "Enter a valid number"
+            etPhone.requestFocus()
+        }
 
         sendVerificationCode(phoneNumber)
 
@@ -52,6 +59,7 @@ class RegisterPhone : AppCompatActivity() {
     }
 
     private fun sendVerificationCode(phoneNumber: String) {
+
         val options = PhoneAuthOptions.newBuilder(auth)
             .setPhoneNumber("+88$phoneNumber")
             .setTimeout(60L, TimeUnit.SECONDS)
@@ -65,9 +73,9 @@ class RegisterPhone : AppCompatActivity() {
         object : OnVerificationStateChangedCallbacks() {
             override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential) {
 
-                //code = phoneAuthCredential.smsCode
+                val code = phoneAuthCredential.smsCode
 
-                //Log.d("CODE", "onVerificationCompleted: ")
+                Log.d("CODE", "onVerificationCompleted: ")
                 if (code != null) {
                     //verifyVerificationCode(code)
                 }
@@ -92,11 +100,10 @@ class RegisterPhone : AppCompatActivity() {
             }
         }
 
-    private fun getVerificationCodeFromUser(verification:String) {
-        val intent = Intent(this, ResetPassPhone::class.java)
-        intent.putExtra("verificationId",verification)
+    private fun getVerificationCodeFromUser(verification: String) {
+        val intent = Intent(this, Otp::class.java)
+        intent.putExtra("verificationId", verification)
         startActivity(intent)
-
     }
 
 

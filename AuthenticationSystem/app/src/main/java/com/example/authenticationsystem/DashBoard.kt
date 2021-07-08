@@ -26,11 +26,11 @@ class DashBoard : AppCompatActivity() {
 
     private fun goForSignOut() {
         mAuth.signOut()
-        goForLogInActivity()
+        goForMainActivity()
     }
 
-    private fun goForLogInActivity() {
-        val intent = Intent(this, Login::class.java)
+    private fun goForMainActivity() {
+        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
 }
