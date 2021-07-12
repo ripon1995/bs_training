@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AuthenticationSystem">
-
+        <activity android:name=".googleSignInAuthentication.LogInWithGoogle"></activity>
         <activity android:name=".phoneNumberAuthentication.otp.Otp" />
         <activity android:name=".phoneNumberAuthentication.login.RegisterPhone" />
         <activity android:name=".phoneNumberAuthentication.login.LoginPhone" />
@@ -20,7 +20,8 @@
         <activity android:name=".emailAuthentication.resetPass.ResetPassword" />
         <activity android:name=".emailAuthentication.register.Register" />
         <activity android:name=".emailAuthentication.login.Login" />
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

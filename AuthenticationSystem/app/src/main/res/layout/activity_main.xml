@@ -36,5 +36,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnEmailAuthentication" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnGoogleAuthentication"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:padding="20dp"
+        android:text="Google authentication"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnPhoneAuthentication" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
