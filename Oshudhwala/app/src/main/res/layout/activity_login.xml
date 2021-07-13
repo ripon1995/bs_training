@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".account.LoginActivity">
+    tools:context=".account.login.LoginActivity">
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvLogin"
+        android:id="@+id/tvWelCome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:fontFamily="sans-serif"
         android:text="@string/welcome"
         android:textColor="@color/black"
@@ -19,17 +20,42 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvTo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="to"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/tvWelCome"
+        app:layout_constraintStart_toStartOf="@id/tvWelCome"
+        app:layout_constraintTop_toBottomOf="@id/tvWelCome" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvCompanyName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="Oushudhwala"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/tvTo"
+        app:layout_constraintStart_toStartOf="@id/tvTo"
+        app:layout_constraintTop_toBottomOf="@id/tvTo" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/filledTextFieldMobile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="100dp"
         android:hint="@string/label_cell"
         android:padding="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvLogin">
+        app:layout_constraintTop_toBottomOf="@id/tvWelCome">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etMobileNumber"
@@ -42,25 +68,6 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/filledTextFieldPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/label_password"
-        android:padding="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/filledTextFieldMobile">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-    </com.google.android.material.textfield.TextInputLayout>
-
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
@@ -68,32 +75,10 @@
         android:padding="5dp"
         android:text="@string/label_login"
         android:textAllCaps="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/filledTextFieldPassword" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:text="@string/don_t_have_an_account"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnLogin" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
-        android:padding="5dp"
-        android:text="@string/label_register"
-        android:textAllCaps="false"
         app:backgroundTint="@color/black"
-        app:layout_constraintStart_toStartOf="@id/tvMessage"
-        app:layout_constraintTop_toBottomOf="@id/tvMessage" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filledTextFieldMobile" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
