@@ -1,0 +1,2 @@
+rootProject.name = "SSLCommerz-test"
+include ':app'
