@@ -2,8 +2,10 @@ package com.example.oshudhwala.account.otp
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.oshudhwala.dataSource.model.Medicine
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.database.FirebaseDatabase
 
@@ -20,9 +22,9 @@ class OtpViewModel : ViewModel() {
 
                     loginSuccessLiveData.postValue("Success")
                     val user = task.result?.user
-                    FirebaseDatabase.getInstance().getReference("AuthenticatedWithPhone")
-                        .child(FirebaseAuth.getInstance().currentUser?.uid!!)
-                        .setValue(user?.phoneNumber)
+
+                    addUserToDatabase(user!!)
+
                 } else {
                     if (task.exception is FirebaseAuthInvalidCredentialsException) {
                         loginSuccessLiveData.postValue("Invalid OTP")
@@ -30,4 +32,11 @@ class OtpViewModel : ViewModel() {
                 }
             }
     }
+
+    private fun addUserToDatabase( user: FirebaseUser){
+        FirebaseDatabase.getInstance().getReference("AuthenticatedWithPhone")
+            .child(FirebaseAuth.getInstance().currentUser?.uid!!)
+            .setValue(user?.phoneNumber)
+    }
+
 }

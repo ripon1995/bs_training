@@ -13,4 +13,18 @@
     <string name="label_register">Register</string>
     <string name="title_activity_maps">Map</string>
     <string name="verification_message">Please type the verification code sent to</string>
+    <string name="content_description_media">lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </string>
+    <string name="oshudhwala">Oshudhwala</string>
+    <string name="medicine">Medicine</string>
+    <string name="order_your_need">Order your need</string>
+    <string name="upload_and_get">Upload and get</string>
+    <string name="medication">Medication</string>
+    <string name="covid">Covid</string>
+    <string name="emergency_issue">Emergency issue</string>
+    <string name="medicine_at_your_door_step">Medicine at your door step</string>
+    <string name="anytime_anywhere">Anytime Anywhere</string>
+    <string name="content_description_more">content_description_more</string>
+    <string name="more">more</string>
+    <string name="content_description_search">content_description_search</string>
+    <string name="search">search</string>
 </resources>

@@ -6,76 +6,94 @@
     android:layout_height="match_parent"
     tools:context=".account.otp.Otp">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvVerificationCode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:fontFamily="sans-serif-thin"
-        android:padding="10dp"
-        android:text="Verification Code"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvVerificationMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:padding="10dp"
-        android:text="@string/verification_message"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@id/tvVerificationCode"
-        app:layout_constraintStart_toStartOf="@id/tvVerificationCode"
-        app:layout_constraintTop_toBottomOf="@id/tvVerificationCode" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvPhoneNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:padding="10dp"
-        android:text="01521329880"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@id/tvVerificationMessage"
-        app:layout_constraintStart_toStartOf="@id/tvVerificationMessage"
-        app:layout_constraintTop_toBottomOf="@id/tvVerificationMessage" />
-
-
-    <in.aabhasjindal.otptextview.OtpTextView
-        android:id="@+id/etOtp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        app:bar_enabled="true"
-        app:bar_height="2dp"
-        app:height="40sp"
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:length="6"
-        app:otp_text_size="30sp"
-        app:width="40sp" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnVerify"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:padding="5dp"
-        android:text="Verify"
-        android:textAllCaps="false"
-        app:backgroundTint="@color/black"
-        app:layout_constraintEnd_toEndOf="@id/etOtp"
-        app:layout_constraintStart_toStartOf="@id/etOtp"
-        app:layout_constraintTop_toBottomOf="@id/etOtp" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvVerificationCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-thin"
+                android:padding="10dp"
+                android:text="Verification Code"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvVerificationMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="10dp"
+                android:text="@string/verification_message"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@id/tvVerificationCode"
+                app:layout_constraintStart_toStartOf="@id/tvVerificationCode"
+                app:layout_constraintTop_toBottomOf="@id/tvVerificationCode" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvPhoneNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="10dp"
+                android:text="01521329880"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@id/tvVerificationMessage"
+                app:layout_constraintStart_toStartOf="@id/tvVerificationMessage"
+                app:layout_constraintTop_toBottomOf="@id/tvVerificationMessage" />
+
+
+            <in.aabhasjindal.otptextview.OtpTextView
+                android:id="@+id/etOtp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                app:bar_enabled="true"
+                app:bar_height="2dp"
+                app:height="40sp"
+                app:layout_constraintEnd_toEndOf="@id/tvPhoneNumber"
+                app:layout_constraintStart_toStartOf="@id/tvPhoneNumber"
+                app:layout_constraintTop_toBottomOf="@id/tvPhoneNumber"
+                app:length="6"
+                app:otp_text_size="30sp"
+                app:width="40sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnVerify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:padding="5dp"
+                android:text="Verify"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="@id/etOtp"
+                app:layout_constraintStart_toStartOf="@id/etOtp"
+                app:layout_constraintTop_toBottomOf="@id/etOtp" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

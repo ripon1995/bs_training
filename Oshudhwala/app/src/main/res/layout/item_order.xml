@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvElementName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Product Name"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnMinusOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/ic_baseline_exposure_neg_1_24"
+        app:layout_constraintBottom_toBottomOf="@id/tvElementQuantity"
+        app:layout_constraintEnd_toStartOf="@id/tvElementQuantity"
+        app:layout_constraintTop_toTopOf="@id/tvElementQuantity"
+        app:tint="@color/black" />
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvElementQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quantity"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@id/tvElementPrice"
+        app:layout_constraintStart_toEndOf="@id/tvElementName"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnAddOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/ic_baseline_exposure_plus_1_24"
+        app:layout_constraintBottom_toBottomOf="@id/tvElementQuantity"
+        app:layout_constraintStart_toEndOf="@id/tvElementQuantity"
+        app:layout_constraintTop_toTopOf="@id/tvElementQuantity"
+        app:tint="@color/black" />
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvElementPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Price"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
