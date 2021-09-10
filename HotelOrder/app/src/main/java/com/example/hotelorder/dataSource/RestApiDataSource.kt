@@ -1,9 +1,10 @@
 package com.example.hotelorder.dataSource
 
+
 import com.example.hotelorder.dataSource.model.Order
-import retrofit2.Call
+import io.reactivex.rxjava3.core.Observable
 
 interface RestApiDataSource {
 
-    fun fetchOrderDetails(): Call<Order>
+    fun fetchOrderDetails(): Observable<Order>
 }

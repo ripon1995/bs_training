@@ -1,4 +1,4 @@
-package com.example.hotelorder.network
+package com.example.basicmvvmpatternwithviewmodelfactory.network
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder

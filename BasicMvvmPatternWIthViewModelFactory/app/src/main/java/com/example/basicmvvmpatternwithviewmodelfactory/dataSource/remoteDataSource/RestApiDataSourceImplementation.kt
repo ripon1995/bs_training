@@ -1,8 +1,8 @@
-package com.example.hotelorder.dataSource
+package com.example.basicmvvmpatternwithviewmodelfactory.dataSource.remoteDataSource
 
-import com.example.hotelorder.dataSource.model.Order
-import com.example.hotelorder.network.ApiInterface
-import com.example.hotelorder.network.RetrofitApiClient
+import com.example.basicmvvmpatternwithviewmodelfactory.dataSource.model.Order
+import com.example.basicmvvmpatternwithviewmodelfactory.network.ApiInterface
+import com.example.basicmvvmpatternwithviewmodelfactory.network.RetrofitApiClient
 import io.reactivex.rxjava3.core.Observable
 
 

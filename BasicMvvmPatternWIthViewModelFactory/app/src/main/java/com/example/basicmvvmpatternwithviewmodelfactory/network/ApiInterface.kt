@@ -1,6 +1,6 @@
-package com.example.hotelorder.network
+package com.example.basicmvvmpatternwithviewmodelfactory.network
 
-import com.example.hotelorder.dataSource.model.Order
+import com.example.basicmvvmpatternwithviewmodelfactory.dataSource.model.Order
 import io.reactivex.rxjava3.core.Observable
 import retrofit2.http.GET
 
