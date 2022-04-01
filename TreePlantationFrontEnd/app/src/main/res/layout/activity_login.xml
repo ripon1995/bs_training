@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivAppImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
+        android:padding="30dp"
+        android:src="@drawable/tree"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvLabelWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:text="Welcome back!"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivAppImage" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvLabelWelcomeDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login to your account"
+        android:textColor="#424242"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@id/tvLabelWelcome"
+        app:layout_constraintStart_toStartOf="@id/tvLabelWelcome"
+        app:layout_constraintTop_toBottomOf="@id/tvLabelWelcome" />
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvPersonImageView"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        app:cardCornerRadius="100dp"
+        app:cardElevation="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvLabelWelcomeDetails">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:src="@drawable/ic_outline_person_outline_24" />
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvPersonUsername"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="55dp"
+        app:cardElevation="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/cvPersonImageView"
+        app:layout_constraintStart_toStartOf="@id/cvPersonImageView"
+        app:layout_constraintTop_toTopOf="@id/cvPersonImageView">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etUserName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Username"
+            app:boxStrokeWidth="0dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:cursorVisible="false"
+                android:textColor="@color/black" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvPasswordImageView"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="100dp"
+        app:cardElevation="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cvPersonImageView">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:src="@drawable/ic_outline_lock_24" />
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvPersonPassword"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="55dp"
+        app:cardElevation="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/cvPasswordImageView"
+        app:layout_constraintStart_toStartOf="@id/cvPasswordImageView"
+        app:layout_constraintTop_toTopOf="@id/cvPasswordImageView">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Password"
+            app:boxStrokeWidth="0dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:cursorVisible="false"
+                android:textColor="@color/black" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#2F80ED"
+        android:text="Sign in"
+        android:textAllCaps="false"
+        app:cornerRadius="50dp"
+        app:layout_constraintEnd_toEndOf="@id/cvPersonUsername"
+        app:layout_constraintStart_toStartOf="@id/cvPasswordImageView"
+        app:layout_constraintTop_toBottomOf="@id/cvPasswordImageView" />
+
+    <View
+        android:layout_width="100dp"
+        android:layout_height="1dp"
+        android:layout_marginEnd="10dp"
+        android:background="#424242"
+        app:layout_constraintBottom_toBottomOf="@id/tvLabelSignInOptions"
+        app:layout_constraintEnd_toStartOf="@id/tvLabelSignInOptions"
+        app:layout_constraintTop_toTopOf="@id/tvLabelSignInOptions" />
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvLabelSignInOptions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Or sign in with"
+        android:textColor="#424242"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnSignIn" />
+
+    <View
+        android:layout_width="100dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="10dp"
+        android:background="#424242"
+        app:layout_constraintBottom_toBottomOf="@id/tvLabelSignInOptions"
+        app:layout_constraintStart_toEndOf="@id/tvLabelSignInOptions"
+        app:layout_constraintTop_toTopOf="@id/tvLabelSignInOptions" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnFacebook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="@color/white"
+        android:elevation="10dp"
+        android:text="f"
+        android:textAllCaps="false"
+        android:textColor="#2F80ED"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvLabelSignInOptions" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnGoogle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="@color/white"
+        android:shadowColor="#2F80ED"
+        android:text="G"
+        android:textAllCaps="false"
+        android:textColor="#2F80ED"
+        android:textSize="25sp"
+        app:elevation="10dp"
+        app:layout_constraintEnd_toStartOf="@id/btnFacebook"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvLabelSignInOptions" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnTwitter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="@color/white"
+        android:elevation="10dp"
+        android:text="t"
+        android:textAllCaps="false"
+        android:textColor="#2F80ED"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnFacebook"
+        app:layout_constraintTop_toBottomOf="@id/tvLabelSignInOptions" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvLabelAccountOpening"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Don't have an account"
+        android:textColor="#424242"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toStartOf="@id/btnSignUp"
+        app:layout_constraintStart_toStartOf="@id/btnFacebook"
+        app:layout_constraintTop_toBottomOf="@id/btnGoogle" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/btnSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="Sign up here"
+        android:textAllCaps="false"
+        android:textColor="#2F80ED"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvLabelAccountOpening"
+        app:layout_constraintEnd_toEndOf="@id/btnFacebook"
+        app:layout_constraintStart_toEndOf="@id/tvLabelAccountOpening"
+        app:layout_constraintTop_toTopOf="@id/tvLabelAccountOpening" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
