@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object NetworkFactory {
-    private const val BASE_URL = "http://172.16.226.179:8000/"
+    private const val BASE_URL = "http://192.168.68.108:8000/"
     private var retrofit: Retrofit? = null
     private val gson: Gson = GsonBuilder().setLenient().create()
     private const val TIME_OUT = 60L

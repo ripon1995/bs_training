@@ -1,8 +1,10 @@
 package com.example.treeplantationfrontend.network
 
+import com.example.treeplantationfrontend.datasource.model.requestBody.AuthenticationRequest
 import com.example.treeplantationfrontend.datasource.model.responseBody.Token
 import com.example.treeplantationfrontend.datasource.model.requestBody.SignUpRequestBody
 import com.example.treeplantationfrontend.datasource.model.requestBody.UserRequestBody
+import com.example.treeplantationfrontend.datasource.model.responseBody.AuthenticationResponse
 import com.example.treeplantationfrontend.datasource.model.responseBody.CustomerSignUpResponse
 import io.reactivex.rxjava3.core.Observable
 import retrofit2.Response
@@ -16,4 +18,7 @@ interface ApiInterface {
 
     @POST("customers/signup/")
     fun signupCustomer(@Body requestBody: SignUpRequestBody): Observable<Response<CustomerSignUpResponse>>
+
+    @POST("auth/users/")
+    fun authenticateUser(@Body requestBody: AuthenticationRequest) : Observable<Response<AuthenticationResponse>>
 }
